@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Abhinav Dasari</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- Scroll Progress -->
+  <div id="scroll-progress"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+
+      <!-- Logo -->
+      <div class="logo playfair-display gradient-text-dark" onclick=scrollToTop()>
+        Abhinav Dasari
+      </div>
+
+      <!-- Desktop Links -->
+      <ul class="nav-links">
+        <li onclick="slowScroll('about')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+          About
+        </li>
+
+        <li onclick="slowScroll('projects')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/>
+          </svg>
+          Projects
+        </li>
+
+        <li onclick="slowScroll('experience')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            <rect width="20" height="14" x="2" y="6" rx="2"/>
+          </svg>
+          Experience
+        </li>
+
+        <li onclick="slowScroll('contact')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+          </svg>
+          Contact
+        </li>
+      </ul>
+
+      <!-- Mobile Hamburger Button -->
+      <button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+
+    </div>
+
+    <!-- Mobile Menu -->
+    <ul class="mobile-menu" id="mobileMenu" role="menu">
+      <li role="menuitem" onclick="slowScroll('about')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+        About
+      </li>
+      <li role="menuitem" onclick="slowScroll('projects')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2"/>
+        </svg>
+        Projects
+      </li>
+      <li role="menuitem" onclick="slowScroll('experience')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+          <rect width="20" height="14" x="2" y="6" rx="2"/>
+        </svg>
+        Experience
+      </li>
+      <li role="menuitem" onclick="slowScroll('contact')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+        </svg>
+        Contact
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero">
+
+    <p class="intro">HELLO, I'M</p>
+
+    <div class="hero-text">
+      <h1 class="name gradient-text-dark">
+        Abhinav Dasari
+      </h1>
+
+      <h2 class="role">
+        <span id="typingText" class="gradient-text-animated"></span>
+        <span class="cursor">|</span>
+      </h2>
+    </div>
+
+    <p class="subtitle">
+      Learning to turn data into clear, actionable insights.
+    </p>
+
+    <div class="socials">
+
+      <a href="https://github.com/280205-Abhi" class="icon-btn" aria-label="GitHub" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+          <path d="M9 18c-4.51 2-5-2-7-2"/>
+        </svg>
+      </a>
+
+      <a href="https://www.linkedin.com/in/abhinavdasari28/" class="icon-btn" aria-label="LinkedIn" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+          <rect width="4" height="12" x="2" y="9"/>
+          <circle cx="4" cy="4" r="2"/>
+        </svg>
+      </a>
+
+      <a href="https://mail.google.com/mail/u/0/#inbox" class="icon-btn" aria-label="Email" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+          <rect x="2" y="4" width="20" height="16" rx="2"/>
+        </svg>
+      </a>
+
+    </div>
+
+    <div class="scroll-indicator" onclick="slowScroll('about')" role="button" tabindex="0" aria-label="Scroll to About section">
+      <span>Scroll to Explore</span>
+      <svg class="bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M6 9l6 6 6-6"/>
+      </svg>
+    </div>
+
+  </section>
+
+  <section id="about" class="about-section">
+    <!-- Heading -->
+    <div class="about-container">
+        <p class="about-label">0.1 ABOUT ME</p>
+        <h2 class="about-title">
+        Get to know <span class="gradient-text-animated">me</span>
+        </h2>
+
+        <!-- Grid -->
+        <div class="about-grid">
+        
+        <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img src="./images/profile.jpg" alt="Avatar" class="flip-photo">
+            </div>
+            <div class="profile-card-wrapper">
+                <div class="profile-card">
+                <div class="profile-avatar">AD</div>
+                <h3 class="profile-name">Abhinav Dasari</h3>
+                <p class="profile-role">Aspiring Data Scientist</p>
+                <div class="profile-divider"></div>
+                <div class="profile-info">
+                    <div class="profile-info-item">
+                    <span class="info-label">Degree</span>
+                    <span class="info-value">B.Tech IT</span>
+                    </div>
+                    <div class="profile-info-item">
+                    <span class="info-label">Focus</span>
+                    <span class="info-value">Data & ML</span>
+                    </div>
+                    <div class="profile-info-item">
+                    <span class="info-label">Status</span>
+                    <span class="info-value">Open to Work</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        
+        <!-- Profile Card -->
+
+        <!-- Text + Stack -->
+        <div class="about-content">
+            <p class="about-text">
+            I'm a
+            <span class="about-highlight playfair-display">B.Tech Information Technology student</span>
+            and
+            <span class="about-highlight playfair-display">Aspiring Data Scientist</span>
+            with a strong interest in turning raw, complex data into meaningful
+            insights and clear stories. I enjoy exploring patterns, uncovering
+            trends, and simplifying complexity to support informed decision-making.
+            </p>
+
+            <p class="about-text mt-paragraph">
+            I work across
+            <span class="about-highlight playfair-display">Data Analysis, Visualization, and Statistical Techniques</span>,
+            building analytical workflows and dashboards using Python, SQL,
+            and modern analytics tools. Curious by nature, I'm continuously
+            learning and refining my skills to grow as a data professional.
+            </p>
+
+            <!-- Tech Stack -->
+            <div class="tech-stack">
+            <span class="tech-badge">Python</span>
+            <span class="tech-badge">SQL</span>
+            <span class="tech-badge">MySQL</span>
+            <span class="tech-badge">Pandas</span>
+            <span class="tech-badge">NumPy</span>
+            <span class="tech-badge">Matplotlib</span>
+            <span class="tech-badge">Power BI</span>
+            <span class="tech-badge">Git</span>
+            <span class="tech-badge">Flask</span>
+            <span class="tech-badge">Scikit-learn</span>
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <section id="projects" class="projects-section">
+    <div class="projects-container">
+
+        <div class="projects-heading">
+        <p class="about-label">0.2 PROJECTS</p>
+        <h2 class="about-title">
+            Featured <span class="gradient-text-animated">Projects</span>
+        </h2>
+        </div>
+
+        <!-- Cards injected by JS -->
+        <div class="projects-grid" id="projects-grid"></div>
+
+    </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience-section">
+    <div class="experience-heading">
+        <p class="about-label">0.3 EXPERIENCE</p>
+        <h2 class="about-title">
+            My <span class="gradient-text-animated">Journey</span>
+        </h2>
+        </div>
+    <div class="experience-container">
+        <div class="timeline" id="timeline"></div>
+    </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="contact-section">
+    <div class="contact-heading">
+        <p class="about-label">0.4 CONTACT</p>
+        <h2 class="about-title">
+            Get In <span class="gradient-text-animated">Touch</span>
+        </h2>
+        <p class="contact-subtitle">
+            I'm currently open to internships and fresher opportunities. 
+            Whether you have a question or just want to say hi — my inbox is open!
+        </p>
+    </div>
+    <div class="contact-container">
+        <div class="contact-grid">
+
+        <!-- Contact Cards -->
+        <div class="contact-cards">
+
+            <a href="mailto:d.abhinav2802@gmai.com" class="contact-card">
+            <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+                <rect x="2" y="4" width="20" height="16" rx="2"/>
+                </svg>
+            </div>
+            <div class="contact-card-text">
+                <span class="contact-card-label">Email</span>
+                <span class="contact-card-value">d.abhinav2802@gmai.com</span>
+            </div>
+            <div class="contact-card-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+            </div>
+            </a>
+
+            <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" class="contact-card">
+            <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+                </svg>
+            </div>
+            <div class="contact-card-text">
+                <span class="contact-card-label">LinkedIn</span>
+                <span class="contact-card-value">linkedin.com/in/abhinavdasari28</span>
+            </div>
+            <div class="contact-card-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+            </div>
+            </a>
+
+            <a href="https://github.com/280205-Abhi" target="_blank" class="contact-card">
+            <div class="contact-card-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+                <path d="M9 18c-4.51 2-5-2-7-2"/>
+                </svg>
+            </div>
+            <div class="contact-card-text">
+                <span class="contact-card-label">GitHub</span>
+                <span class="contact-card-value">github.com/280205-Abhi</span>
+            </div>
+            <div class="contact-card-arrow">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+                </svg>
+            </div>
+            </a>
+
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-wrapper">
+            <div class="contact-form-card">
+
+            <div class="form-group">
+                <label class="form-label">Name</label>
+                <input type="text" class="form-input" placeholder="Your name" id="form-name" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-input" placeholder="your@email.com" id="form-email" />
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Message</label>
+                <textarea class="form-input form-textarea" placeholder="What's on your mind?" id="form-message"></textarea>
+            </div>
+
+            <button class="form-submit" id="form-submit" onclick="handleFormSubmit()">
+                <span id="submit-text">Send Message</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/>
+                </svg>
+            </button>
+
+            <p class="form-note" id="form-note"></p>
+
+            </div>
+        </div>
+
+        </div>
+    </div>
+    </section>
+
+    <footer class="site-footer">
+    <div class="footer-container">
+
+        <!-- Copyright -->
+        <div class="footer-copy">
+        <span>© <span id="footer-year"></span> Built by</span>
+        <span class="footer-name">Abhinav</span>
+        </div>
+
+        <!-- Social Links -->
+        <div class="footer-socials">
+        <a href="https://github.com/280205-Abhi" aria-label="GitHub" class="footer-icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
+            <path d="M9 18c-4.51 2-5-2-7-2"/>
+            </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abhinavdasari28/" aria-label="LinkedIn" class="footer-icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+            <rect width="4" height="12" x="2" y="9"/>
+            <circle cx="4" cy="4" r="2"/>
+            </svg>
+        </a>
+        <a href="mailto:d.abhinav2802@gmai.com" aria-label="Mail" class="footer-icon-btn">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/>
+            <rect x="2" y="4" width="20" height="16" rx="2"/>
+            </svg>
+        </a>
+        </div>
+
+        <!-- Back to Top -->
+        <button class="footer-top-btn" onclick="scrollToTop()" aria-label="Back to top">
+        <span>Back to top</span>
+        <svg class="arrow-up-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 15l-6-6-6 6"/>
+        </svg>
+        </button>
+
+    </div>
+    </footer>
+
+  <script src="/main.js"></script>
+
+</body>
+</html>
