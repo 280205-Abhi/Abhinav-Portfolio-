@@ -119,6 +119,36 @@
     document.querySelectorAll('.about-label, .about-title, .about-grid')
     .forEach(el => aboutObserver.observe(el));
 
+    
+    /* ============================
+    TECH STACK DATA — add new tech here
+    ============================ */
+    const techStack = [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Next.js",
+        "Python",
+        "SQL",
+        "Pandas",
+        "NumPy",
+        "Matplotlib",
+        "Power BI",
+        "Git",
+        "Flask",
+        "Scikit-learn",
+    ];
+
+    /* ============================
+    TECH STACK RENDERER
+    ============================ */
+    function renderTechStack() {
+        const container = document.getElementById('techstack');
+        container.innerHTML = techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+    }
+
+    renderTechStack();
+
     /* ============================
         FOOTER — DYNAMIC YEAR & SCROLL TO TOP
     ============================ */
