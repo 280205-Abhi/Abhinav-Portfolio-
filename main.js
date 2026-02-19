@@ -143,7 +143,7 @@
     TECH STACK RENDERER
     ============================ */
     function renderTechStack() {
-        const container = document.getElementById('techstack');
+        const container = document.getElementById('tech_stack');
         container.innerHTML = techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
     }
 
