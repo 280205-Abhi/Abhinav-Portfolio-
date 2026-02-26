@@ -1,4 +1,4 @@
-  /* ============================
+/* ============================
        SCROLL PROGRESS BAR
     ============================ */
     const progress = document.getElementById('scroll-progress');
@@ -13,11 +13,58 @@
        SMOOTH SCROLL
     ============================ */
     function slowScroll(id) {
-      const el = document.getElementById(id);
-      if (!el) return;
-      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Close mobile menu if open
+      // Close the mobile menu first, then wait for it to fully collapse
+      // before calculating scroll position — otherwise the open menu's
+      // extra height throws off the offset measurement.
+      const wasOpen = menuOpen;
       closeMobileMenu();
+
+      const MENU_COLLAPSE_DELAY = wasOpen ? 420 : 0; // matches 0.4s CSS transition
+
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (!el) return;
+
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+
+        // Extra padding so the section heading isn't flush against the navbar
+        const OFFSET_PADDING = 24;
+
+        // getBoundingClientRect().top is relative to viewport,
+        // so add current scrollY to get absolute document position
+        const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
+        const targetY = absoluteTop - navbarHeight - OFFSET_PADDING;
+
+        // Use smooth-scroll polyfill approach for reliable mobile support
+        smoothScrollTo(targetY, 600);
+      }, MENU_COLLAPSE_DELAY);
+    }
+
+    // Custom smooth scroll — browser smooth behavior is unreliable on some
+    // mobile browsers (especially inside setTimeout), so we drive it manually
+    // with requestAnimationFrame for consistent cross-device behaviour.
+    function smoothScrollTo(targetY, duration) {
+      const startY = window.scrollY;
+      const distance = targetY - startY;
+      let startTime = null;
+
+      // Ease-in-out cubic for a natural deceleration feel
+      function easeInOutCubic(t) {
+        return t < 0.5
+          ? 4 * t * t * t
+          : 1 - Math.pow(-2 * t + 2, 3) / 2;
+      }
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+        if (progress < 1) requestAnimationFrame(step);
+      }
+
+      requestAnimationFrame(step);
     }
 
     /* ============================
@@ -316,4 +363,3 @@
     document.querySelectorAll(
     '.experience-heading, .timeline, .contact-heading, .contact-grid'
     ).forEach(el => aboutObserver.observe(el));
-
