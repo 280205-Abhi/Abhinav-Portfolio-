@@ -6,7 +6,6 @@
   --background: hsl(220, 20%, 12%);
   --foreground: hsl(210, 40%, 96%);
   --accent: #f59f0a;
-
   --font-sans: "Playfair Display", serif;
   --font-mono: "Inter", sans-serif;
 }
@@ -113,7 +112,7 @@ body {
 .nav-container {
   max-width: 1200px;
   margin: auto;
-  padding: 18px 24px;
+  padding: 14px 24px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -123,19 +122,10 @@ body {
    LOGO
 ============================ */
 
-.logo {
-  font-size: clamp(1.3rem, 4vw, 2rem);
-  font-weight: bold;
-  letter-spacing: 2px;
-  font-style: italic;
+.logo img{
+  width: 125px;
+  height: 58px;
   cursor: pointer;
-  white-space: nowrap;
-  flex-shrink: 0;
-
-  background: linear-gradient(90deg, #e5e7eb, #9ca3af, #d4af37);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
 }
 
 /* ============================
