@@ -129,6 +129,24 @@ body {
 }
 
 /* ============================
+  LOGO MOBILE
+============================ */
+
+@media (max-width: 768px) {
+  .logo img {
+   width: 100px;
+   height: 46px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo img {
+   width: 75px;
+   height: 35px;
+  }
+}
+
+/* ============================
    DESKTOP NAV LINKS
 ============================ */
 
