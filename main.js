@@ -112,6 +112,7 @@
     ============================ */
     const roles = [
     'Aspiring Data Scientist',
+    '3rd-Year IT Student',
     'ML Enthusiast',
     'Python Programmer',
     'Data Analytics Student',
@@ -274,8 +275,8 @@
     const experiences = [
     {
         period: "JUNE 2025 — JULY 2025",
-        role: "Full Stack Deveopment Intern",
-        org: "TechAisa Mechatronics Pvt Ltd",
+        role: "Full Stack Development Intern",
+        org: "TechAsia Mechatronics Pvt Ltd",
         description: "Built a Website for the company Workflow",
         tags: ["React", "SQL", "Express", "Node"],
         side: "left",
