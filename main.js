@@ -111,11 +111,10 @@
        TYPING ANIMATION
     ============================ */
     const roles = [
-    'Aspiring Data Scientist',
     '3rd-Year IT Student',
-    'ML Enthusiast',
-    'Python Programmer',
-    'Data Analytics Student',
+    'Aspiring Data Scientist',
+    'Data Analyst',
+    'Machine Learning Enthusiast'
     ];
 
     let roleIndex = 0;
