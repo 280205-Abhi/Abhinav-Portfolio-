@@ -130,7 +130,7 @@
         charIndex++;
         if (charIndex === current.length) {
           isDeleting = true;
-          setTimeout(typeEffect, 1800);
+          setTimeout(typeEffect, 2000);
           return;
         }
       } else {
@@ -142,7 +142,7 @@
         }
       }
 
-      setTimeout(typeEffect, isDeleting ? 55 : 90);
+      setTimeout(typeEffect, isDeleting ? 40 : 70);
     }
 
     typeEffect();
@@ -310,22 +310,35 @@
     CONTACT FORM
     ============================ */
     async function handleFormSubmit() {
-    const name    = document.getElementById('form-name').value.trim();
-    const email   = document.getElementById('form-email').value.trim();
-    const message = document.getElementById('form-message').value.trim();
+    const nameInput = document.getElementById('form-name');
+    const emailInput = document.getElementById('form-email');
+    const messageInput = document.getElementById('form-message');
+    
+    const name    = nameInput.value.trim();
+    const email   = emailInput.value.trim();
+    const message = messageInput.value.trim();
     const note    = document.getElementById('form-note');
     const btn     = document.getElementById('form-submit');
     const text    = document.getElementById('submit-text');
 
-    if (!name || !email || !message) {
-        note.textContent = '⚠ Please fill in all fields.';
-        note.className = 'form-note error';
-        return;
-    }
+    // Reset classes
+    [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid', 'valid'));
+
+    let isValid = true;
+
+    if (!name) { nameInput.classList.add('invalid'); isValid = false; } else { nameInput.classList.add('valid'); }
+    if (!message) { messageInput.classList.add('invalid'); isValid = false; } else { messageInput.classList.add('valid'); }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-        note.textContent = '⚠ Please enter a valid email.';
+    if (!email || !emailRegex.test(email)) {
+        emailInput.classList.add('invalid');
+        isValid = false;
+    } else {
+        emailInput.classList.add('valid');
+    }
+
+    if (!isValid) {
+        note.textContent = '⚠ Please check the highlighted fields.';
         note.className = 'form-note error';
         return;
     }
@@ -344,9 +357,10 @@
         if (response.ok) {
         note.textContent = '✓ Message sent! I\'ll get back to you soon.';
         note.className = 'form-note success';
-        document.getElementById('form-name').value    = '';
-        document.getElementById('form-email').value   = '';
-        document.getElementById('form-message').value = '';
+        nameInput.value    = '';
+        emailInput.value   = '';
+        messageInput.value = '';
+        [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid', 'valid'));
         } else {
         throw new Error('Failed');
         }
