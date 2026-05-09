@@ -276,7 +276,7 @@
         period: "JUNE 2025 — JULY 2025",
         role: "Full Stack Development Intern",
         org: "TechAsia Mechatronics Pvt Ltd",
-        description: "Built a Website for the company Workflow",
+        description: "Developed a full-stack web application to streamline the company's internal workflow and operational management.",
         tags: ["React", "SQL", "Express", "Node"],
         side: "left",
     },
