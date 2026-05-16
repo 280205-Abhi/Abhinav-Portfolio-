@@ -1,230 +1,230 @@
 /* ============================
        SCROLL PROGRESS BAR
     ============================ */
-    const progress = document.getElementById('scroll-progress');
-    window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-      progress.style.width = pct + '%';
-    }, { passive: true });
+const progress = document.getElementById('scroll-progress');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+  progress.style.width = pct + '%';
+}, { passive: true });
 
-    /* ============================
-       SMOOTH SCROLL
-    ============================ */
-    function slowScroll(id) {
-      // Close the mobile menu first, then wait for it to fully collapse
-      // before calculating scroll position — otherwise the open menu's
-      // extra height throws off the offset measurement.
-      const wasOpen = menuOpen;
-      closeMobileMenu();
+/* ============================
+   SMOOTH SCROLL
+============================ */
+function slowScroll(id) {
+  // Close the mobile menu first, then wait for it to fully collapse
+  // before calculating scroll position — otherwise the open menu's
+  // extra height throws off the offset measurement.
+  const wasOpen = menuOpen;
+  closeMobileMenu();
 
-      const MENU_COLLAPSE_DELAY = wasOpen ? 420 : 0; // matches 0.4s CSS transition
+  const MENU_COLLAPSE_DELAY = wasOpen ? 420 : 0; // matches 0.4s CSS transition
 
-      setTimeout(() => {
-        const el = document.getElementById(id);
-        if (!el) return;
+  setTimeout(() => {
+    const el = document.getElementById(id);
+    if (!el) return;
 
-        const navbar = document.querySelector('.navbar');
-        const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
+    const navbar = document.querySelector('.navbar');
+    const navbarHeight = navbar ? navbar.getBoundingClientRect().height : 0;
 
-        // Extra padding so the section heading isn't flush against the navbar
-        const OFFSET_PADDING = 24;
+    // Extra padding so the section heading isn't flush against the navbar
+    const OFFSET_PADDING = 24;
 
-        // getBoundingClientRect().top is relative to viewport,
-        // so add current scrollY to get absolute document position
-        const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
-        const targetY = absoluteTop - navbarHeight - OFFSET_PADDING;
+    // getBoundingClientRect().top is relative to viewport,
+    // so add current scrollY to get absolute document position
+    const absoluteTop = el.getBoundingClientRect().top + window.scrollY;
+    const targetY = absoluteTop - navbarHeight - OFFSET_PADDING;
 
-        // Use smooth-scroll polyfill approach for reliable mobile support
-        smoothScrollTo(targetY, 600);
-      }, MENU_COLLAPSE_DELAY);
+    // Use smooth-scroll polyfill approach for reliable mobile support
+    smoothScrollTo(targetY, 600);
+  }, MENU_COLLAPSE_DELAY);
+}
+
+// Custom smooth scroll — browser smooth behavior is unreliable on some
+// mobile browsers (especially inside setTimeout), so we drive it manually
+// with requestAnimationFrame for consistent cross-device behaviour.
+function smoothScrollTo(targetY, duration) {
+  const startY = window.scrollY;
+  const distance = targetY - startY;
+  let startTime = null;
+
+  // Ease-in-out cubic for a natural deceleration feel
+  function easeInOutCubic(t) {
+    return t < 0.5
+      ? 4 * t * t * t
+      : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  }
+
+  function step(timestamp) {
+    if (!startTime) startTime = timestamp;
+    const elapsed = timestamp - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    window.scrollTo(0, startY + distance * easeInOutCubic(progress));
+    if (progress < 1) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+/* ============================
+   MOBILE MENU TOGGLE
+============================ */
+const menuBtn = document.getElementById('menuBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+let menuOpen = false;
+
+function toggleMenu() {
+  menuOpen = !menuOpen;
+  menuBtn.classList.toggle('open', menuOpen);
+  mobileMenu.classList.toggle('show', menuOpen);
+  menuBtn.setAttribute('aria-expanded', menuOpen);
+}
+
+function closeMobileMenu() {
+  menuOpen = false;
+  menuBtn.classList.remove('open');
+  mobileMenu.classList.remove('show');
+  menuBtn.setAttribute('aria-expanded', 'false');
+}
+
+// Close menu on outside click
+document.addEventListener('click', (e) => {
+  if (menuOpen && !menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
+
+// Close menu on resize to desktop
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 768 && menuOpen) {
+    closeMobileMenu();
+  }
+});
+
+// Keyboard support for scroll indicator
+document.querySelector('.scroll-indicator').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === ' ') slowScroll('about');
+});
+
+/* ============================
+   TYPING ANIMATION
+============================ */
+const roles = [
+  'IT Student',
+  'Data Scientist',
+  'Data Analyst',
+  'Data Engineer'
+];
+
+let roleIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+const typingEl = document.getElementById('typingText');
+
+function typeEffect() {
+  const current = roles[roleIndex];
+
+  if (!isDeleting) {
+    typingEl.textContent = current.slice(0, charIndex + 1);
+    charIndex++;
+    if (charIndex === current.length) {
+      isDeleting = true;
+      setTimeout(typeEffect, 2000);
+      return;
     }
-
-    // Custom smooth scroll — browser smooth behavior is unreliable on some
-    // mobile browsers (especially inside setTimeout), so we drive it manually
-    // with requestAnimationFrame for consistent cross-device behaviour.
-    function smoothScrollTo(targetY, duration) {
-      const startY = window.scrollY;
-      const distance = targetY - startY;
-      let startTime = null;
-
-      // Ease-in-out cubic for a natural deceleration feel
-      function easeInOutCubic(t) {
-        return t < 0.5
-          ? 4 * t * t * t
-          : 1 - Math.pow(-2 * t + 2, 3) / 2;
-      }
-
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        window.scrollTo(0, startY + distance * easeInOutCubic(progress));
-        if (progress < 1) requestAnimationFrame(step);
-      }
-
-      requestAnimationFrame(step);
+  } else {
+    typingEl.textContent = current.slice(0, charIndex - 1);
+    charIndex--;
+    if (charIndex === 0) {
+      isDeleting = false;
+      roleIndex = (roleIndex + 1) % roles.length;
     }
+  }
 
-    /* ============================
-       MOBILE MENU TOGGLE
-    ============================ */
-    const menuBtn = document.getElementById('menuBtn');
-    const mobileMenu = document.getElementById('mobileMenu');
-    let menuOpen = false;
+  setTimeout(typeEffect, isDeleting ? 40 : 70);
+}
 
-    function toggleMenu() {
-      menuOpen = !menuOpen;
-      menuBtn.classList.toggle('open', menuOpen);
-      mobileMenu.classList.toggle('show', menuOpen);
-      menuBtn.setAttribute('aria-expanded', menuOpen);
-    }
+typeEffect();
 
-    function closeMobileMenu() {
-      menuOpen = false;
-      menuBtn.classList.remove('open');
-      mobileMenu.classList.remove('show');
-      menuBtn.setAttribute('aria-expanded', 'false');
-    }
-
-    // Close menu on outside click
-    document.addEventListener('click', (e) => {
-      if (menuOpen && !menuBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-        closeMobileMenu();
-      }
-    });
-
-    // Close menu on resize to desktop
-    window.addEventListener('resize', () => {
-      if (window.innerWidth > 768 && menuOpen) {
-        closeMobileMenu();
-      }
-    });
-
-    // Keyboard support for scroll indicator
-    document.querySelector('.scroll-indicator').addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === ' ') slowScroll('about');
-    });
-
-    /* ============================
-       TYPING ANIMATION
-    ============================ */
-    const roles = [
-    '3rd-Year IT Student',
-    'Aspiring Data Scientist',
-    'Data Analyst',
-    'Machine Learning Enthusiast'
-    ];
-
-    let roleIndex = 0;
-    let charIndex = 0;
-    let isDeleting = false;
-    const typingEl = document.getElementById('typingText');
-
-    function typeEffect() {
-      const current = roles[roleIndex];
-
-      if (!isDeleting) {
-        typingEl.textContent = current.slice(0, charIndex + 1);
-        charIndex++;
-        if (charIndex === current.length) {
-          isDeleting = true;
-          setTimeout(typeEffect, 2000);
-          return;
-        }
+/* ============================
+    ABOUT SECTION — SCROLL REVEAL
+============================ */
+const aboutObserver = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
       } else {
-        typingEl.textContent = current.slice(0, charIndex - 1);
-        charIndex--;
-        if (charIndex === 0) {
-          isDeleting = false;
-          roleIndex = (roleIndex + 1) % roles.length;
-        }
+        entry.target.classList.remove('in-view');
       }
+    });
+  },
+  { rootMargin: '-100px' }
+);
 
-      setTimeout(typeEffect, isDeleting ? 40 : 70);
-    }
+document.querySelectorAll('.about-label, .about-title, .about-grid')
+  .forEach(el => aboutObserver.observe(el));
 
-    typeEffect();
 
-    /* ============================
-        ABOUT SECTION — SCROLL REVEAL
-    ============================ */
-    const aboutObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-        } else {
-            entry.target.classList.remove('in-view');
-        }
-        });
-    },
-    { rootMargin: '-100px' }
-    );
+/* ============================
+TECH STACK DATA — add new tech here
+============================ */
+const techStack = [
+  "React",
+  "Node.js",
+  "MongoDB",
+  "Next.js",
+  "Python",
+  "SQL",
+  "Pandas",
+  "NumPy",
+  "Matplotlib",
+  "Power BI",
+  "Git",
+  "Flask",
+  "Scikit-learn",
+];
 
-    document.querySelectorAll('.about-label, .about-title, .about-grid')
-    .forEach(el => aboutObserver.observe(el));
+/* ============================
+TECH STACK RENDERER
+============================ */
+function renderTechStack() {
+  const container = document.getElementById('tech_stack');
+  container.innerHTML = techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+}
 
-    
-    /* ============================
-    TECH STACK DATA — add new tech here
-    ============================ */
-    const techStack = [
-        "React",
-        "Node.js",
-        "MongoDB",
-        "Next.js",
-        "Python",
-        "SQL",
-        "Pandas",
-        "NumPy",
-        "Matplotlib",
-        "Power BI",
-        "Git",
-        "Flask",
-        "Scikit-learn",
-    ];
+renderTechStack();
 
-    /* ============================
-    TECH STACK RENDERER
-    ============================ */
-    function renderTechStack() {
-        const container = document.getElementById('tech_stack');
-        container.innerHTML = techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
-    }
+/* ============================
+    FOOTER — DYNAMIC YEAR & SCROLL TO TOP
+============================ */
+document.getElementById('footer-year').textContent = new Date().getFullYear();
 
-    renderTechStack();
+function scrollToTop() {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
-    /* ============================
-        FOOTER — DYNAMIC YEAR & SCROLL TO TOP
-    ============================ */
-    document.getElementById('footer-year').textContent = new Date().getFullYear();
+/* ============================
+PROJECTS DATA — add new projects here
+============================ */
+const projects = [
+  {
+    title: "Faket — Fake News Detection & Verification Tool",
+    description: "A web application that detects and verifies the authenticity of news articles using advanced NLP techniques and machine learning models.",
+    tags: ["Next.js", "Node.js", "MySQL", "FastAPI", "Tailwind CSS"],
+    github: "https://github.com/280205-Abhi/Faktet-WebApp",
+    live: "#",
+  },
+];
 
-    function scrollToTop() {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+/* ============================
+PROJECTS RENDERER
+============================ */
+function renderProjects() {
+  const grid = document.getElementById('projects-grid');
 
-    /* ============================
-    PROJECTS DATA — add new projects here
-    ============================ */
-    const projects = [
-    {
-        title: "Faket — Fake News Detection & Verification Tool",
-        description: "A web application that detects and verifies the authenticity of news articles using advanced NLP techniques and machine learning models.",
-        tags: ["Next.js", "Node.js", "MySQL", "FastAPI", "Tailwind CSS"],
-        github: "https://github.com/280205-Abhi/Faktet-WebApp",
-        live: "#",
-    },
-    ];
-
-    /* ============================
-    PROJECTS RENDERER
-    ============================ */
-    function renderProjects() {
-    const grid = document.getElementById('projects-grid');
-
-    grid.innerHTML = projects.map(project => `
+  grid.innerHTML = projects.map(project => `
         <div class="project-card">
         <div class="project-card-glow"></div>
         <div class="project-card-content">
@@ -260,35 +260,35 @@
         </div>
         </div>
     `).join('');
-    }
+}
 
-    renderProjects();
+renderProjects();
 
-    /* Projects scroll reveal — reuses existing observer */
-    document.querySelectorAll('.projects-heading, .projects-grid')
-    .forEach(el => aboutObserver.observe(el));
+/* Projects scroll reveal — reuses existing observer */
+document.querySelectorAll('.projects-heading, .projects-grid')
+  .forEach(el => aboutObserver.observe(el));
 
-    /* ============================
-    EXPERIENCE DATA — add new entries here
-    ============================ */
-    const experiences = [
-    {
-        period: "JUNE 2025 — JULY 2025",
-        role: "Full Stack Development Intern",
-        org: "TechAsia Mechatronics Pvt Ltd",
-        description: "Developed a full-stack web application to streamline the company's internal workflow and operational management.",
-        tags: ["React", "SQL", "Express", "Node"],
-        side: "left",
-    },
-    ];
+/* ============================
+EXPERIENCE DATA — add new entries here
+============================ */
+const experiences = [
+  {
+    period: "JUNE 2025 — JULY 2025",
+    role: "Full Stack Development Intern",
+    org: "TechAsia Mechatronics Pvt Ltd",
+    description: "Developed a full-stack web application to streamline the company's internal workflow and operational management.",
+    tags: ["React", "SQL", "Express", "Node"],
+    side: "left",
+  },
+];
 
-    /* ============================
-    EXPERIENCE RENDERER
-    ============================ */
-    function renderExperience() {
-    const timeline = document.getElementById('timeline');
+/* ============================
+EXPERIENCE RENDERER
+============================ */
+function renderExperience() {
+  const timeline = document.getElementById('timeline');
 
-    timeline.innerHTML = experiences.map(exp => `
+  timeline.innerHTML = experiences.map(exp => `
         <div class="timeline-item ${exp.side === 'right' ? 'right' : ''}">
         <div class="timeline-dot"></div>
         <div class="timeline-card">
@@ -302,78 +302,78 @@
         </div>
         </div>
     `).join('');
-    }
+}
 
-    renderExperience();
+renderExperience();
 
-    /* ============================
-    CONTACT FORM
-    ============================ */
-    async function handleFormSubmit() {
-    const nameInput = document.getElementById('form-name');
-    const emailInput = document.getElementById('form-email');
-    const messageInput = document.getElementById('form-message');
-    
-    const name    = nameInput.value.trim();
-    const email   = emailInput.value.trim();
-    const message = messageInput.value.trim();
-    const note    = document.getElementById('form-note');
-    const btn     = document.getElementById('form-submit');
-    const text    = document.getElementById('submit-text');
+/* ============================
+CONTACT FORM
+============================ */
+async function handleFormSubmit() {
+  const nameInput = document.getElementById('form-name');
+  const emailInput = document.getElementById('form-email');
+  const messageInput = document.getElementById('form-message');
 
-    // Reset classes
-    [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid', 'valid'));
+  const name = nameInput.value.trim();
+  const email = emailInput.value.trim();
+  const message = messageInput.value.trim();
+  const note = document.getElementById('form-note');
+  const btn = document.getElementById('form-submit');
+  const text = document.getElementById('submit-text');
 
-    let isValid = true;
+  // Reset classes
+  [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid', 'valid'));
 
-    if (!name) { nameInput.classList.add('invalid'); isValid = false; } else { nameInput.classList.add('valid'); }
-    if (!message) { messageInput.classList.add('invalid'); isValid = false; } else { messageInput.classList.add('valid'); }
+  let isValid = true;
 
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!email || !emailRegex.test(email)) {
-        emailInput.classList.add('invalid');
-        isValid = false;
+  if (!name) { nameInput.classList.add('invalid'); isValid = false; } else { nameInput.classList.add('valid'); }
+  if (!message) { messageInput.classList.add('invalid'); isValid = false; } else { messageInput.classList.add('valid'); }
+
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!email || !emailRegex.test(email)) {
+    emailInput.classList.add('invalid');
+    isValid = false;
+  } else {
+    emailInput.classList.add('valid');
+  }
+
+  if (!isValid) {
+    note.textContent = '⚠ Please check the highlighted fields.';
+    note.className = 'form-note error';
+    return;
+  }
+
+  btn.disabled = true;
+  text.textContent = 'Sending...';
+  note.textContent = '';
+
+  try {
+    const response = await fetch('https://formspree.io/f/xnjbzbog', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message }),
+    });
+
+    if (response.ok) {
+      note.textContent = '✓ Message sent! I\'ll get back to you soon.';
+      note.className = 'form-note success';
+      nameInput.value = '';
+      emailInput.value = '';
+      messageInput.value = '';
+      [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid', 'valid'));
     } else {
-        emailInput.classList.add('valid');
+      throw new Error('Failed');
     }
+  } catch {
+    note.textContent = '✗ Something went wrong. Try emailing me directly.';
+    note.className = 'form-note error';
+  } finally {
+    btn.disabled = false;
+    text.textContent = 'Send Message';
+  }
+}
 
-    if (!isValid) {
-        note.textContent = '⚠ Please check the highlighted fields.';
-        note.className = 'form-note error';
-        return;
-    }
-
-    btn.disabled = true;
-    text.textContent = 'Sending...';
-    note.textContent = '';
-
-    try {
-        const response = await fetch('https://formspree.io/f/xnjbzbog', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, message }),
-        });
-
-        if (response.ok) {
-        note.textContent = '✓ Message sent! I\'ll get back to you soon.';
-        note.className = 'form-note success';
-        nameInput.value    = '';
-        emailInput.value   = '';
-        messageInput.value = '';
-        [nameInput, emailInput, messageInput].forEach(el => el.classList.remove('invalid', 'valid'));
-        } else {
-        throw new Error('Failed');
-        }
-    } catch {
-        note.textContent = '✗ Something went wrong. Try emailing me directly.';
-        note.className = 'form-note error';
-    } finally {
-        btn.disabled = false;
-        text.textContent = 'Send Message';
-    }
-    }
-
-    /* Scroll reveal — reuses existing observer */
-    document.querySelectorAll(
-    '.experience-heading, .timeline, .contact-heading, .contact-grid'
-    ).forEach(el => aboutObserver.observe(el));
+/* Scroll reveal — reuses existing observer */
+document.querySelectorAll(
+  '.experience-heading, .timeline, .contact-heading, .contact-grid'
+).forEach(el => aboutObserver.observe(el));
