@@ -550,6 +550,16 @@ section:not(.hero) {
   .hero {
     padding: 30px 24px 50px;
   }
+
+  .btn-primary {
+    padding: 12px 22px;
+    font-size: 0.95rem;
+  }
+
+  .scroll-indicator {
+    padding: 8px 20px;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -568,6 +578,13 @@ section:not(.hero) {
 
   .scroll-indicator {
     margin-top: 32px;
+    padding: 6px 16px;
+    font-size: 0.75rem;
+  }
+
+  .btn-primary {
+    padding: 10px 18px;
+    font-size: 0.85rem;
   }
 }
 
