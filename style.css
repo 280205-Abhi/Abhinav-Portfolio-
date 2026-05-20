@@ -111,7 +111,7 @@ body {
 }
 
 .nav-container {
-  max-width: 1200px;
+  max-width: 1100px;
   margin: auto;
   padding: 14px 24px;
   display: flex;
@@ -289,19 +289,62 @@ section:not(.hero) {
 .hero {
   min-height: calc(100vh - 62px);
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
   padding: 40px 24px 60px;
-  gap: 0;
 }
 
-.intro {
-  font-size: clamp(11px, 2vw, 14px);
-  letter-spacing: 4px;
+.hero-content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.hero-left {
+  text-align: left;
+  flex: 1;
+}
+
+.hero-right {
+  flex: 0 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.hero-glow {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  background: rgba(245, 159, 10, 0.25);
+  filter: blur(80px);
+  border-radius: 50%;
+  z-index: 0;
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.1); opacity: 1; }
+}
+
+.intro-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border: 1px solid rgba(245, 159, 10, 0.3);
+  background: rgba(245, 159, 10, 0.1);
   color: var(--accent);
-  font-weight: 300;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  border-radius: 999px;
+  margin-bottom: 16px;
 }
 
 .hero-text {
@@ -310,9 +353,10 @@ section:not(.hero) {
 }
 
 .name {
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(2.2rem, 6.5vw, 4.5rem);
   font-weight: bold;
   line-height: 1.1;
+  white-space: nowrap;
 }
 
 .role {
@@ -321,12 +365,12 @@ section:not(.hero) {
   margin-top: 14px;
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2px;
 }
 
 .subtitle {
-  margin-top: 40px;
+  margin-top: 24px;
   color: #9ca3af;
   max-width: 560px;
   font-size: clamp(0.9rem, 2.5vw, 1.1rem);
@@ -351,9 +395,9 @@ section:not(.hero) {
 ============================ */
 
 .hero-actions {
-  margin-top: 36px;
+  margin-top: 28px;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .btn-primary {
@@ -391,9 +435,9 @@ section:not(.hero) {
 .socials {
   display: flex;
   gap: 16px;
-  margin-top: 36px;
+  margin-top: 24px;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .icon-btn {
@@ -428,18 +472,29 @@ section:not(.hero) {
 ============================ */
 
 .scroll-indicator {
-  margin-top: 44px;
-  display: flex;
+  margin-top: 32px;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
+  padding: 10px 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
   cursor: pointer;
   color: #9ca3af;
-  transition: color 0.3s ease;
-  font-size: clamp(0.85rem, 2vw, 1rem);
+  font-size: 0.85rem;
+  font-family: "JetBrains Mono", monospace;
+  transition: all 0.3s ease;
   user-select: none;
+  backdrop-filter: blur(10px);
 }
 
-.scroll-indicator:hover { color: white; }
+.scroll-indicator:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(245, 159, 10, 0.4);
+  color: white;
+  box-shadow: 0 4px 20px rgba(245, 159, 10, 0.15);
+}
 
 .bounce {
   width: 20px;
@@ -457,9 +512,31 @@ section:not(.hero) {
    RESPONSIVE — TABLET
 ============================ */
 
+@media (max-width: 950px) {
+  .name { white-space: normal; } /* Allow wrapping on smaller tablets if needed */
+}
+
 @media (max-width: 900px) {
   .nav-links { gap: 20px; }
   .nav-links li { font-size: 0.88rem; }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 40px;
+  }
+  .hero-left {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .role, .hero-actions, .socials {
+    justify-content: center;
+  }
+  .scroll-indicator {
+    justify-content: center;
+  }
 }
 
 /* ============================
@@ -471,13 +548,13 @@ section:not(.hero) {
   .menu-btn { display: flex; }
 
   .hero {
-    padding: 30px 20px 50px;
+    padding: 30px 24px 50px;
   }
 }
 
 @media (max-width: 480px) {
   .hero {
-    padding: 24px 16px 40px;
+    padding: 24px 24px 40px;
   }
 
   .subtitle {
@@ -542,35 +619,29 @@ section:not(.hero) {
 /* Grid */
 
 .about-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 48px;
-  align-items: start;
-}
-
-@media (min-width: 768px) {
-  .about-grid {
-    grid-template-columns: 2fr 3fr;
-    gap: 64px;
-  }
+  align-items: flex-start;
+  max-width: 850px;
 }
 
 /* ============================
-   PROFILE CARD
+   PROFILE CARD (HERO)
 ============================ */
-
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr;      /* stacks on mobile */
-  gap: 48px;
-  align-items: start;
-}
 
 .flip-card {
   background-color: transparent;
-  width: min(280px, 85vw);   /* was fixed 280px */
-  height: 350px;
+  width: min(320px, 85vw);
+  height: min(400px, 106vw); /* Keeps aspect ratio proportional on mobile */
   perspective: 1000px;
+  z-index: 1;
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
 }
 
 .flip-photo {
@@ -759,14 +830,13 @@ section:not(.hero) {
 
 @media (min-width: 768px) {
   .about-grid {
-    grid-template-columns: 2fr 3fr; /* side by side on desktop */
-    gap: 64px;
+    /* single column layout */
   }
 }
 
 @media (max-width: 767px) {
   .about-section {
-    padding: 60px 20px;
+    padding: 60px 24px;
   }
 
   .about-content {
@@ -793,6 +863,7 @@ section:not(.hero) {
 
 .footer-container {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -892,6 +963,7 @@ section:not(.hero) {
 
 .projects-container {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
   padding-top: 0px;
 }
@@ -1079,8 +1151,9 @@ section:not(.hero) {
 }
 
 .experience-container {
-  max-width: 100vw;
-  justify-items: center;
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
 }
 
 .experience-heading {
@@ -1142,9 +1215,7 @@ section:not(.hero) {
 }
 
 @media(min-width: 1024px){
-    .timeline{
-        min-width: 1100px;
-    }
+    /* Removed min-width: 1100px from timeline */
 }
 
 /* Dot */
@@ -1249,6 +1320,7 @@ section:not(.hero) {
 
 .contact-container {
   max-width: 1100px;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -1272,6 +1344,8 @@ section:not(.hero) {
   display: grid;
   grid-template-columns: 1fr;
   gap: 40px;
+  max-width: 500px;
+  margin: 0 auto;
 }
 
 @media (min-width: 768px) {
@@ -1279,6 +1353,8 @@ section:not(.hero) {
     grid-template-columns: 1fr 1.4fr;
     gap: 56px;
     align-items: start;
+    max-width: none;
+    margin: 0;
   }
 }
 
@@ -1339,9 +1415,10 @@ section:not(.hero) {
 }
 
 .contact-card-value {
-  font-size: 0.88rem;
+  font-size: clamp(0.75rem, 4vw, 0.88rem);
   color: #d1d5db;
   font-family: "Space Grotesk", sans-serif;
+  word-break: break-word;
 }
 
 .contact-card-arrow {
