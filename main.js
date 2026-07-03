@@ -321,6 +321,64 @@ function renderExperience() {
 renderExperience();
 
 /* ============================
+ACHIEVEMENTS DATA — add new entries here
+============================ */
+const achievements = [
+  {
+    title: "Data Analytics Simulation",
+    year: "2026",
+    icon: "chart",
+    description: "Deloitte (via Forage) — Completed a job simulation analyzing client datasets and delivering insights. (April 2026)"
+  },
+  {
+    title: "Smart India Hackathon",
+    year: "2025",
+    icon: "trophy",
+    description: "Winner – Institute Level Round. Developed EcoSnap, a rewards-based mobile app incentivizing eco-friendly actions via image verification and credit system."
+  },
+];
+
+/* Icon helper */
+function getAchievementIcon(iconName) {
+  const icons = {
+    trophy: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path><path d="M12 2a6 6 0 0 1 6 6c0 3-2 6-6 6S6 11 6 8a6 6 0 0 1 6-6z"></path></svg>`,
+    award: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg>`,
+    star: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>`,
+    medal: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22a7 7 0 1 0 0-14 7 7 0 0 0 0 14z"></path><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"></path><path d="M12 2v6"></path><path d="M12 8L9 5h6z"></path></svg>`,
+    target: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg>`,
+    sparkles: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m11.314 11.314l.707.707M12 7a5 5 0 1 0 0 10 5 5 0 0 0 0-10z"></path></svg>`,
+    chart: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"></line><line x1="12" y1="20" x2="12" y2="4"></line><line x1="6" y1="20" x2="6" y2="14"></line></svg>`
+  };
+  return icons[iconName] || icons.star;
+}
+
+/* ============================
+ACHIEVEMENTS RENDERER
+============================ */
+function renderAchievements() {
+  const grid = document.getElementById('achievements-grid');
+  if (!grid) return;
+
+  grid.innerHTML = achievements.map(ach => `
+    <div class="achievement-card">
+      <div class="achievement-card-glow"></div>
+      <div class="achievement-card-content">
+        <div class="achievement-card-top">
+          <div class="achievement-icon-wrapper">
+            ${getAchievementIcon(ach.icon)}
+          </div>
+          <span class="achievement-year">${ach.year}</span>
+        </div>
+        <h3 class="achievement-title">${ach.title}</h3>
+        <p class="achievement-desc">${ach.description}</p>
+      </div>
+    </div>
+  `).join('');
+}
+
+renderAchievements();
+
+/* ============================
 CONTACT FORM
 ============================ */
 async function handleFormSubmit() {
@@ -389,5 +447,5 @@ async function handleFormSubmit() {
 
 /* Scroll reveal — reuses existing observer */
 document.querySelectorAll(
-  '.experience-heading, .timeline, .contact-heading, .contact-grid'
+  '.experience-heading, .timeline, .achievements-heading, .achievements-grid, .contact-heading, .contact-grid'
 ).forEach(el => aboutObserver.observe(el));

@@ -78,6 +78,18 @@
           Experience
         </li>
 
+        <li onclick="slowScroll('achievements')">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+            <path d="M4 22h16"></path>
+            <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
+            <path d="M12 2a6 6 0 0 1 6 6c0 3-2 6-6 6S6 11 6 8a6 6 0 0 1 6-6z"></path>
+          </svg>
+          Achievements
+        </li>
+
         <li onclick="slowScroll('contact')">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
             stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -122,6 +134,17 @@
           <rect width="20" height="14" x="2" y="6" rx="2" />
         </svg>
         Experience
+      </li>
+      <li role="menuitem" onclick="slowScroll('achievements')">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+          <path d="M4 22h16"></path>
+          <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
+          <path d="M12 2a6 6 0 0 1 6 6c0 3-2 6-6 6S6 11 6 8a6 6 0 0 1 6-6z"></path>
+        </svg>
+        Achievements
       </li>
       <li role="menuitem" onclick="slowScroll('contact')">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
@@ -222,7 +245,7 @@
                 <div class="profile-info">
                   <div class="profile-info-item">
                     <span class="info-label">Degree</span>
-                    <span class="info-value">B.Tech IT (3rd Yr)</span>
+                    <span class="info-value">B.Tech IT (4th Yr)</span>
                   </div>
                   <div class="profile-info-item">
                     <span class="info-label">Focus</span>
@@ -311,10 +334,26 @@
     </div>
   </section>
 
+  <!-- ACHIEVEMENTS SECTION -->
+  <section id="achievements" class="achievements-section">
+    <div class="achievements-heading">
+      <p class="about-label">0.4 ACHIEVEMENTS</p>
+      <h2 class="about-title">
+        Milestones & <span class="gradient-text-animated">Recognition</span>
+      </h2>
+      <p class="achievements-subtitle">
+        A collection of moments that mark my journey of growth, learning, and impact.
+      </p>
+    </div>
+    <div class="achievements-container">
+      <div class="achievements-grid" id="achievements-grid"></div>
+    </div>
+  </section>
+
   <!-- CONTACT SECTION -->
   <section id="contact" class="contact-section">
     <div class="contact-heading">
-      <p class="about-label">0.4 CONTACT</p>
+      <p class="about-label">0.5 CONTACT</p>
       <h2 class="about-title">
         Get In <span class="gradient-text-animated">Touch</span>
       </h2>
