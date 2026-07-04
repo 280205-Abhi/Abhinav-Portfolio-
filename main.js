@@ -217,7 +217,7 @@ const projects = [
     metric: "↘ €11.5M",
     image: "./files/12_revenue_by_cancellation_status.png",
     github: "https://github.com/280205-Abhi/Hotel_Booking_Analysis",
-    live: "./files/Hotel_Booking_Analysis_report.pdf",
+    live: "https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link",
   },
 ];
 
