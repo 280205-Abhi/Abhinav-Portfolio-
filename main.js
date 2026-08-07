@@ -219,6 +219,25 @@ const projects = [
     github: "https://github.com/280205-Abhi/Hotel_Booking_Analysis",
     live: "https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link",
   },
+  {
+    title: "NeuroAI - XAI Based ASD Classification and Severity Estimation",
+    description:
+      "Multimodal AI decision support system for ASD integrating brain MRI, speech, and behavioral data. Achieved 96.55% accuracy with SHAP/Grad-CAM++ explainability and a full-stack FastAPI + React app.",
+    tags: [
+      "Python",
+      "PyTorch",
+      "Scikit-learn",
+      "FastAPI",
+      "React",
+      "SHAP",
+      "Librosa"
+    ],
+    category: "AI/ML",
+    metric: "96.55% 🎯",
+    image: "./files/neuro_ai_project.png",
+    github: "https://github.com/280205-Abhi/NeuroAI_ASD",
+    live: "",
+  },
 ];
 
 /* ============================
