@@ -219,6 +219,16 @@ const projects = [
     github: "https://github.com/280205-Abhi/Hotel_Booking_Analysis",
     live: "https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link",
   },
+  {
+    title: "NeuroAI — Explainable AI-Based ASD Classification & Severity Estimation",
+    description: "Multimodal clinical-support system integrating brain MRI, speech acoustics, and M-CHAT-R behavioral screening for ASD detection and severity estimation — achieving 96.55% accuracy on clinical classification and 84.21% accuracy on MRI-based diagnosis.",
+    tags: ["Python", "PyTorch", "Scikit-learn", "FastAPI", "React", "SHAP"],
+    category: "AI/ML",
+    metric: "🎯 96.55%",
+    image: "./files/[your-screenshot-filename].png",
+    github: "https://github.com/280205-Abhi/[your-repo-name]",
+    live: "",
+  },
 ];
 
 /* ============================
