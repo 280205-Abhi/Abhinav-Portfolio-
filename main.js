@@ -1,12 +1,33 @@
 /* ============================
-       SCROLL PROGRESS BAR
+   MOUSE SPOTLIGHT TRACKER
+============================ */
+window.addEventListener('pointermove', (e) => {
+  document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+  document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+  if (!document.body.classList.contains('mouse-active')) {
+    document.body.classList.add('mouse-active');
+  }
+}, { passive: true });
+
+/* ============================
+       SCROLL PROGRESS BAR & NAVBAR PILL
     ============================ */
 const progress = document.getElementById('scroll-progress');
+const mainNavbar = document.getElementById('mainNavbar');
+
 window.addEventListener('scroll', () => {
   const scrollTop = window.scrollY;
   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
   const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
-  progress.style.width = pct + '%';
+  if (progress) progress.style.width = pct + '%';
+
+  if (mainNavbar) {
+    if (scrollTop > 150) {
+      mainNavbar.classList.add('scrolled-pill');
+    } else {
+      mainNavbar.classList.remove('scrolled-pill');
+    }
+  }
 }, { passive: true });
 
 /* ============================
@@ -78,6 +99,7 @@ function toggleMenu() {
   menuOpen = !menuOpen;
   menuBtn.classList.toggle('open', menuOpen);
   mobileMenu.classList.toggle('show', menuOpen);
+  if (mainNavbar) mainNavbar.classList.toggle('menu-is-open', menuOpen);
   menuBtn.setAttribute('aria-expanded', menuOpen);
 }
 
@@ -85,6 +107,7 @@ function closeMobileMenu() {
   menuOpen = false;
   menuBtn.classList.remove('open');
   mobileMenu.classList.remove('show');
+  if (mainNavbar) mainNavbar.classList.remove('menu-is-open');
   menuBtn.setAttribute('aria-expanded', 'false');
 }
 
@@ -103,18 +126,21 @@ window.addEventListener('resize', () => {
 });
 
 // Keyboard support for scroll indicator
-document.querySelector('.scroll-indicator').addEventListener('keydown', (e) => {
-  if (e.key === 'Enter' || e.key === ' ') slowScroll('about');
-});
+const scrollMouseEl = document.querySelector('.scroll-mouse');
+if (scrollMouseEl) {
+  scrollMouseEl.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter' || e.key === ' ') slowScroll('about');
+  });
+}
 
 /* ============================
    TYPING ANIMATION
 ============================ */
 const roles = [
-  'IT Student',
+  'Software Engineer',
   'Data Scientist',
   'Data Analyst',
-  'Data Engineer'
+  'ML Engineer'
 ];
 
 let roleIndex = 0;
@@ -123,6 +149,7 @@ let isDeleting = false;
 const typingEl = document.getElementById('typingText');
 
 function typeEffect() {
+  if (!typingEl) return;
   const current = roles[roleIndex];
 
   if (!isDeleting) {
@@ -160,192 +187,355 @@ const aboutObserver = new IntersectionObserver(
       }
     });
   },
-  { rootMargin: '-100px' }
+  { rootMargin: '0px 0px -40px 0px' }
 );
 
-document.querySelectorAll('.about-label, .about-title, .about-grid')
+document.querySelectorAll('.about-subhead, .about-title-main, .about-grid-new')
   .forEach(el => aboutObserver.observe(el));
 
-
 /* ============================
-TECH STACK DATA — add new tech here
+    PROFILE CARD — 3D TILT ANIMATION
 ============================ */
-const techStack = [
-  "React",
-  "Node.js",
-  "MongoDB",
-  "Next.js",
-  "Python",
-  "SQL",
-  "Pandas",
-  "NumPy",
-  "Matplotlib",
-  "Power BI",
-  "Git",
-  "Flask",
-  "Scikit-learn",
-];
+const profileCardWrapper = document.getElementById('profileCardWrapper');
+const profileCard = document.getElementById('profileCard');
 
-/* ============================
-TECH STACK RENDERER
-============================ */
-function renderTechStack() {
-  const container = document.getElementById('tech_stack');
-  container.innerHTML = techStack.map(tech => `<span class="tech-badge">${tech}</span>`).join('');
+if (profileCardWrapper && profileCard) {
+  profileCardWrapper.addEventListener('mousemove', (e) => {
+    const rect = profileCardWrapper.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+
+    const rotateX = ((y - centerY) / centerY) * -15;
+    const rotateY = ((x - centerX) / centerX) * 15;
+
+    const glareX = (x / rect.width) * 100;
+    const glareY = (y / rect.height) * 100;
+
+    profileCard.style.setProperty('--glare-x', `${glareX}%`);
+    profileCard.style.setProperty('--glare-y', `${glareY}%`);
+
+    profileCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.03, 1.03, 1.03)`;
+    profileCard.style.boxShadow = `${-rotateY * 1.8}px ${rotateX * 1.8}px 40px rgba(16, 185, 129, 0.25)`;
+  });
+
+  profileCardWrapper.addEventListener('mouseleave', () => {
+    profileCard.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+    profileCard.style.boxShadow = '0 0 35px rgba(16, 185, 129, 0.15)';
+  });
 }
 
-renderTechStack();
 
 /* ============================
     FOOTER — DYNAMIC YEAR & SCROLL TO TOP
 ============================ */
-document.getElementById('footer-year').textContent = new Date().getFullYear();
+const footerYearEl = document.getElementById('footer-year');
+if (footerYearEl) {
+  footerYearEl.textContent = new Date().getFullYear();
+}
 
 function scrollToTop() {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 /* ============================
-PROJECTS DATA — add new projects here
+PROJECTS DATA — Code Inspector Component
 ============================ */
 const projects = [
   {
-    title: "Hotel Booking Analysis — Cancellation & Revenue Analysis",
-    description: "End-to-end EDA on 119K+ hotel bookings across Resort & City hotels (2015–2017), uncovering cancellation drivers, pricing patterns, and seasonal demand — with €11.5M in lost revenue quantified and 6 business recommendations delivered.",
-    tags: ["Python", "Pandas", "Seaborn", "Plotly", "Matplotlib"],
-    category: "EDA",
-    metric: "↘ €11.5M",
-    image: "./files/12_revenue_by_cancellation_status.png",
-    github: "https://github.com/280205-Abhi/Hotel_Booking_Analysis",
-    live: "https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link",
+    id: "neuroai",
+    num: "01",
+    shortTitle: "NeuroAI",
+    tagline: "Multimodal XAI ASD Classifier",
+    title: "NeuroAI — XAI ASD Classifier",
+    filename: "asd_classifier.py",
+    badge: "96.55% accuracy",
+    codeSnippet: [
+      { num: 1, text: '<span class="code-keyword">from</span> neuroai <span class="code-keyword">import</span> MultimodalClassifier' },
+      { num: 2, text: 'pipe = MultimodalClassifier(modalities=[<span class="code-string">"mri"</span>, <span class="code-string">"audio"</span>])' },
+      { num: 3, text: 'pipe.fit(X_train, y_train, explainability=<span class="code-bool">True</span>)' },
+      { num: 4, text: 'metrics = pipe.evaluate(test_loader, shap=<span class="code-bool">True</span>)' }
+    ],
+    description:
+      "Multimodal AI decision support system integrating brain MRI, speech, and behavioral data. Achieved 96.55% accuracy with SHAP & Grad-CAM++ explainability pipelines for transparent clinical insights.",
+    tags: ["Python", "PyTorch", "FastAPI", "React", "SHAP", "Librosa"],
+    github: "https://github.com/280205-Abhi/NeuroAI_ASD",
+    live: "https://github.com/280205-Abhi/NeuroAI_ASD"
   },
   {
-    title: "NeuroAI — Explainable AI-Based ASD Classification & Severity Estimation",
-    description: "Multimodal clinical-support system integrating brain MRI, speech acoustics, and M-CHAT-R behavioral screening for ASD detection and severity estimation — achieving 96.55% accuracy on clinical classification and 84.21% accuracy on MRI-based diagnosis.",
-    tags: ["Python", "PyTorch", "Scikit-learn", "FastAPI", "React", "SHAP"],
-    category: "AI/ML",
-    metric: "🎯 96.55%",
-    image: "./files/[your-screenshot-filename].png",
-    github: "https://github.com/280205-Abhi/[your-repo-name]",
-    live: "",
+    id: "hotel",
+    num: "02",
+    shortTitle: "Hotel Analytics",
+    tagline: "Cancellation & Revenue Analysis",
+    title: "Hotel Booking Analysis — Revenue Insights",
+    filename: "revenue_insights.py",
+    badge: "119k+ records",
+    codeSnippet: [
+      { num: 1, text: '<span class="code-keyword">import</span> pandas <span class="code-keyword">as</span> pd, plotly.express <span class="code-keyword">as</span> px' },
+      { num: 2, text: 'df = pd.read_csv(<span class="code-string">"hotel_bookings.csv"</span>)' },
+      { num: 3, text: 'cancel_rate = df.groupby(<span class="code-string">"hotel"</span>)[<span class="code-string">"is_canceled"</span>].mean()' },
+      { num: 4, text: 'lost_rev = df[df[<span class="code-string">"is_canceled"</span>] == 1][<span class="code-string">"adr"</span>].sum()' }
+    ],
+    description:
+      "End-to-end EDA on 119K+ hotel bookings. Uncovered key cancellation drivers, quantified €11.5M in lost revenue, and delivered 6 actionable business recommendations.",
+    tags: ["Python", "Pandas", "Plotly", "Seaborn", "Matplotlib"],
+    github: "https://github.com/280205-Abhi/Hotel_Booking_Analysis",
+    live: "https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link"
   },
 ];
 
-/* ============================
-PROJECTS RENDERER
-============================ */
+let activeProjectId = projects[0].id;
+
 function renderProjects() {
-  const grid = document.getElementById('projects-grid');
+  const selectorList = document.getElementById('projects-selector-list');
+  const inspectorWindow = document.getElementById('projects-inspector-window');
 
-  grid.innerHTML = projects.map(project => `
-        <div class="project-card">
-          <div class="project-card-glow"></div>
-          <div class="project-card-content">
+  if (!selectorList || !inspectorWindow) return;
 
-            <!-- Insight image visual area at the top -->
-            <div class="project-card-chart-area">
-              <div class="chart-header">
-                <span class="project-category-badge">${project.category}</span>
-                <span class="project-metric">${project.metric}</span>
-              </div>
-              <div class="project-insight-container">
-                <img src="${project.image}" alt="${project.title} Insight" class="project-insight-image" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%23f3f4f6%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%239ca3af%22 font-family=%22sans-serif%22 font-size=%2212%22>Insight Image Placeholder</text></svg>'">
-              </div>
-            </div>
-
-            <!-- Card text and tags below chart -->
-            <div class="project-card-body">
-              <h3 class="project-title">${project.title}</h3>
-              <p class="project-desc">${project.description}</p>
-
-              <div class="project-tags">
-                ${project.tags.map(tag => `<span class="project-tag">${tag}</span>`).join('')}
-              </div>
-
-              <div class="project-footer-links">
-                <a href="${project.github}" class="project-footer-link" target="_blank">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/>
-                    <path d="M9 18c-4.51 2-5-2-7-2"/>
-                  </svg>
-                  <span>Code</span>
-                </a>
-                <a href="${project.live}" class="project-footer-link" target="_blank">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/>
-                    <line x1="10" y1="14" x2="21" y2="3"/>
-                  </svg>
-                  <span>View</span>
-                </a>
-              </div>
-            </div>
-
-          </div>
+  // Render Left Column: Selectable Project Cards
+  selectorList.innerHTML = projects.map(proj => {
+    const isActive = proj.id === activeProjectId;
+    return `
+      <div 
+        class="project-select-card ${isActive ? 'active' : ''}" 
+        onclick="selectProject('${proj.id}')"
+        role="tab"
+        tabindex="0"
+        aria-selected="${isActive}"
+      >
+        <div class="proj-select-header">
+          <span class="proj-select-num">${proj.num}</span>
+          <span class="proj-select-title">${proj.shortTitle}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="proj-arrow-icon">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
         </div>
-    `).join('');
+        <p class="proj-select-tagline">${proj.tagline}</p>
+      </div>
+    `;
+  }).join('');
+
+  // Render Right Column: Code & Details Inspector
+  const current = projects.find(p => p.id === activeProjectId) || projects[0];
+
+  inspectorWindow.innerHTML = `
+    <div class="proj-win-header">
+      <div class="proj-win-dots">
+        <span class="dot red"></span>
+        <span class="dot yellow"></span>
+        <span class="dot green"></span>
+      </div>
+      <span class="proj-win-filename">${current.filename}</span>
+    </div>
+
+    <div class="proj-win-body">
+      <div class="code-snippet-box">
+        ${current.codeSnippet.map(line => `
+          <div class="code-line">
+            <span class="line-num">${line.num}</span>
+            <span class="line-content">${line.text}</span>
+          </div>
+        `).join('')}
+      </div>
+
+      <div class="proj-details-block">
+        <div class="proj-details-title-row">
+          <h3 class="proj-details-title">${current.title}</h3>
+          ${current.badge ? `<span class="proj-badge-pill">${current.badge}</span>` : ''}
+        </div>
+
+        <p class="proj-details-desc">${current.description}</p>
+
+        <div class="proj-tags-row">
+          ${current.tags.map(tag => `<span class="proj-tag-pill">${tag}</span>`).join('')}
+        </div>
+
+        <div class="proj-actions-row">
+          ${current.github ? `
+            <a href="${current.github}" target="_blank" class="proj-btn proj-btn-dark" aria-label="View Source Code">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-svg">
+                <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+              </svg>
+              <span>source</span>
+            </a>
+          ` : ''}
+          ${current.live ? `
+            <a href="${current.live}" target="_blank" class="proj-btn proj-btn-cyan" aria-label="View Live Project">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-svg">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/>
+                <line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              <span>live_demo</span>
+            </a>
+          ` : ''}
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function selectProject(id) {
+  activeProjectId = id;
+  renderProjects();
 }
 
 renderProjects();
 
 /* Projects scroll reveal — reuses existing observer */
-document.querySelectorAll('.projects-heading, .projects-grid')
+document.querySelectorAll('.projects-heading, .projects-layout')
   .forEach(el => aboutObserver.observe(el));
 
 /* ============================
-EXPERIENCE DATA — add new entries here
+EXPERIENCE DATA — Git Terminal Style
 ============================ */
 const experiences = [
   {
-    period: "JUNE 2025 — JULY 2025",
+    id: "techasia",
+    hash: "a1f9c2e",
+    repo: "techasia/mechatronics",
+    commitMsg: "feat: Full Stack Development Intern workflow suite",
+    shortRole: "Full Stack Intern",
+    year: "2025",
     role: "Full Stack Development Intern",
-    org: "TechAsia Mechatronics Pvt Ltd",
-    description: "Developed a full-stack web application to streamline the company's internal workflow and operational management.",
-    tags: ["React", "SQL", "Express", "Node"],
-    side: "left",
-  },
+    company: "TechAsia Mechatronics Pvt Ltd",
+    period: "JUNE 2025 — JULY 2025",
+    additions: "+24,800",
+    deletions: "-9,128",
+    diffBars: { green: 7, red: 2 },
+    bullets: [
+      "Developed a full-stack web application to streamline the company's internal workflow and operational management.",
+      "Engineered responsive React front-end components and integrated RESTful APIs with Node.js & Express.",
+      "Managed database schema design and optimized SQL query execution for internal reporting modules."
+    ],
+    tags: ["React", "SQL", "Express", "Node.js"]
+  }
 ];
 
-/* ============================
-EXPERIENCE RENDERER
-============================ */
-function renderExperience() {
-  const timeline = document.getElementById('timeline');
+let activeExpId = experiences[0].id;
 
-  timeline.innerHTML = experiences.map(exp => `
-        <div class="timeline-item ${exp.side === 'right' ? 'right' : ''}">
-        <div class="timeline-dot"></div>
-        <div class="timeline-card">
-            <p class="timeline-period">${exp.period}</p>
-            <h3 class="timeline-role">${exp.role}</h3>
-            <p class="timeline-org">${exp.org}</p>
-            <p class="timeline-desc">${exp.description}</p>
-            <div class="timeline-tags">
-            ${exp.tags.map(tag => `<span class="timeline-tag">${tag}</span>`).join('')}
-            </div>
+function renderExperience() {
+  const tabsContainer = document.getElementById('experience-tabs');
+  const detailContainer = document.getElementById('experience-detail');
+  const statusContainer = document.getElementById('git-term-status-text');
+
+  if (statusContainer) {
+    statusContainer.textContent = `main ↑ ${experiences.length} commits`;
+  }
+
+  if (!tabsContainer || !detailContainer) return;
+
+  // Render Commit List (Left Column)
+  tabsContainer.innerHTML = experiences.map((exp, index) => {
+    const isActive = exp.id === activeExpId;
+    return `
+      <div 
+        class="git-commit-card ${isActive ? 'active' : ''}" 
+        onclick="selectExperience('${exp.id}')"
+        role="tab"
+        tabindex="0"
+        aria-selected="${isActive}"
+      >
+        <div class="commit-graph-indicator">
+          <span class="commit-dot ${isActive ? 'active' : ''}"></span>
+          ${index < experiences.length - 1 ? '<span class="commit-graph-line"></span>' : ''}
         </div>
+        <div class="commit-card-content">
+          <div class="commit-meta-row">
+            <span class="commit-hash">${exp.hash}</span>
+            <span class="commit-repo-pill">${exp.repo}</span>
+          </div>
+          <h4 class="commit-msg-text">${exp.commitMsg}</h4>
+          <p class="commit-subtext">${exp.shortRole} · ${exp.year}</p>
         </div>
-    `).join('');
+      </div>
+    `;
+  }).join('');
+
+  // Render Selected Commit Detail (Right Column)
+  const current = experiences.find(e => e.id === activeExpId) || experiences[0];
+
+  const greenBlocks = Array(current.diffBars.green).fill('<span class="diff-block green"></span>').join('');
+  const redBlocks = Array(current.diffBars.red).fill('<span class="diff-block red"></span>').join('');
+
+  detailContainer.innerHTML = `
+    <div class="git-detail-header">
+      <div class="git-detail-title-block">
+        <h3 class="git-detail-role-title">${current.role}</h3>
+        <p class="git-detail-company">@ ${current.company}</p>
+      </div>
+      <div class="git-detail-period">${current.period}</div>
+    </div>
+
+    <div class="git-detail-stats-row">
+      <span class="stat-add">${current.additions}</span>
+      <span class="stat-del">${current.deletions}</span>
+      <div class="diff-blocks-grid">
+        ${greenBlocks}${redBlocks}
+      </div>
+    </div>
+
+    <ul class="git-detail-bullets-list">
+      ${current.bullets.map(bullet => `
+        <li class="git-bullet-item">
+          <span class="git-plus-sign">+</span>
+          <span class="git-bullet-content">${bullet}</span>
+        </li>
+      `).join('')}
+    </ul>
+
+    <div class="git-detail-tags">
+      ${current.tags.map(tag => `<span class="git-tag-pill">${tag}</span>`).join('')}
+    </div>
+  `;
+}
+
+function selectExperience(id) {
+  activeExpId = id;
+  renderExperience();
 }
 
 renderExperience();
 
 /* ============================
-ACHIEVEMENTS DATA — add new entries here
+ACHIEVEMENTS DATA — Codified System Logs
 ============================ */
 const achievements = [
   {
+    id: "deloitte",
     title: "Data Analytics Simulation",
+    issuer: "Deloitte (via Forage)",
     year: "2026",
+    status: "[✓] VERIFIED",
+    badgeType: "verified",
     icon: "chart",
-    description: "Deloitte (via Forage) — Completed a job simulation analyzing client datasets and delivering insights. (April 2026)"
+    filename: "deloitte_simulation.json",
+    logOutput: `> EXECUTE: analyze_client_datasets()
+> CLIENT: Deloitte (Job Simulation)
+> STATUS: COMPLETED & VERIFIED [April 2026]
+> OUTCOME: Actionable business insights & data modeling`,
+    description: "Completed a comprehensive job simulation analyzing complex client datasets, data modeling, and delivering strategic business recommendations.",
+    tags: ["Data Analytics", "Data Modeling", "Deloitte", "Forage"]
   },
   {
+    id: "sih",
     title: "Smart India Hackathon",
+    issuer: "Ministry of Education / SIH",
     year: "2025",
+    status: "[★] WINNER",
+    badgeType: "winner",
     icon: "trophy",
-    description: "Winner – Institute Level Round. Developed EcoSnap, a rewards-based mobile app incentivizing eco-friendly actions via image verification and credit system."
-  },
+    filename: "sih_ecosnap.json",
+    logOutput: `> EXECUTE: deploy_hackathon_project()
+> EVENT: Smart India Hackathon 2025
+> RESULT: Winner – Institute Level Round
+> PRODUCT: EcoSnap (AI Image Verified Eco App)`,
+    description: "Winner – Institute Level Round. Developed EcoSnap, a rewards-based mobile app incentivizing eco-friendly actions via image verification and credit system.",
+    tags: ["SIH Hackathon", "Winner", "EcoSnap", "AI Verification"]
+  }
 ];
 
 /* Icon helper */
@@ -371,16 +561,38 @@ function renderAchievements() {
 
   grid.innerHTML = achievements.map(ach => `
     <div class="achievement-card">
-      <div class="achievement-card-glow"></div>
-      <div class="achievement-card-content">
-        <div class="achievement-card-top">
-          <div class="achievement-icon-wrapper">
-            ${getAchievementIcon(ach.icon)}
-          </div>
-          <span class="achievement-year">${ach.year}</span>
+      <span class="hud-bracket top-left"></span>
+      <span class="hud-bracket top-right"></span>
+      <span class="hud-bracket bottom-left"></span>
+      <span class="hud-bracket bottom-right"></span>
+
+      <div class="achieve-card-header">
+        <div class="achieve-icon-box">
+          ${getAchievementIcon(ach.icon)}
         </div>
-        <h3 class="achievement-title">${ach.title}</h3>
-        <p class="achievement-desc">${ach.description}</p>
+        <div class="achieve-meta-group">
+          <span class="achieve-badge-pill ${ach.badgeType}">${ach.status}</span>
+          <span class="achieve-year-tag">${ach.year}</span>
+        </div>
+      </div>
+
+      <h3 class="achieve-card-title">${ach.title}</h3>
+      <p class="achieve-card-issuer">@ ${ach.issuer}</p>
+
+      <div class="achieve-log-box">
+        <div class="log-line-header">
+          <span class="log-dot red"></span>
+          <span class="log-dot yellow"></span>
+          <span class="log-dot green"></span>
+          <span class="log-file-name">${ach.filename}</span>
+        </div>
+        <pre class="log-content-text">${ach.logOutput}</pre>
+      </div>
+
+      <p class="achieve-card-desc">${ach.description}</p>
+
+      <div class="achieve-tags-row">
+        ${ach.tags.map(t => `<span class="achieve-tag-pill">${t}</span>`).join('')}
       </div>
     </div>
   `).join('');
@@ -457,5 +669,5 @@ async function handleFormSubmit() {
 
 /* Scroll reveal — reuses existing observer */
 document.querySelectorAll(
-  '.experience-heading, .timeline, .achievements-heading, .achievements-grid, .contact-heading, .contact-grid'
+  '.experience-heading, .git-terminal-window, .achievements-heading, .achievements-window, .contact-heading, .contact-grid'
 ).forEach(el => aboutObserver.observe(el));

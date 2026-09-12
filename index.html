@@ -40,65 +40,49 @@
   <!-- Scroll Progress -->
   <div id="scroll-progress"></div>
 
-  <!-- Navbar -->
-  <nav class="navbar">
+  <!-- Dynamic Navbar -->
+  <nav class="navbar" id="mainNavbar">
     <div class="nav-container">
 
       <!-- Logo -->
-      <div class="logo playfair-display gradient-text-dark" onclick=scrollToTop()>
-        <img src="./files/AD logo.png" alt="logo">
+      <div class="logo-code" onclick="scrollToTop()">
+        <span class="code-bracket">&lt;</span>
+        <span class="code-name">Abhinav</span>
+        <span class="code-bracket">/&gt;</span>
       </div>
+
+      <div class="pill-divider-desktop"></div>
 
       <!-- Desktop Links -->
       <ul class="nav-links">
         <li onclick="slowScroll('about')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-            <circle cx="12" cy="7" r="4" />
-          </svg>
-          About
+          <span class="nav-num">01.</span> About
         </li>
-
         <li onclick="slowScroll('projects')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
-          </svg>
-          Projects
+          <span class="nav-num">02.</span> Projects
         </li>
-
         <li onclick="slowScroll('experience')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-            <rect width="20" height="14" x="2" y="6" rx="2" />
-          </svg>
-          Experience
+          <span class="nav-num">03.</span> Experience
         </li>
-
         <li onclick="slowScroll('achievements')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-            <path d="M4 22h16"></path>
-            <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
-            <path d="M12 2a6 6 0 0 1 6 6c0 3-2 6-6 6S6 11 6 8a6 6 0 0 1 6-6z"></path>
-          </svg>
-          Achievements
+          <span class="nav-num">04.</span> Achievements
         </li>
-
         <li onclick="slowScroll('contact')">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-          </svg>
-          Contact
+          <span class="nav-num">05.</span> Contact
         </li>
       </ul>
+
+      <!-- Resume Button -->
+      <a href="./files/Abhinav_Final_Resume.pdf" class="nav-resume-btn" target="_blank" download>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+        </svg>
+        <span>Resume</span>
+      </a>
 
       <!-- Mobile Hamburger Button -->
       <button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
@@ -112,150 +96,245 @@
     <!-- Mobile Menu -->
     <ul class="mobile-menu" id="mobileMenu" role="menu">
       <li role="menuitem" onclick="slowScroll('about')">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="menu-item-icon">
+          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
           <circle cx="12" cy="7" r="4" />
         </svg>
-        About
+        <span>About</span>
       </li>
       <li role="menuitem" onclick="slowScroll('projects')">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path
-            d="m6 14 1.5-2.9A2 2 0 0 1 9.24 10H20a2 2 0 0 1 1.94 2.5l-1.54 6a2 2 0 0 1-1.95 1.5H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h3.9a2 2 0 0 1 1.69.9l.81 1.2a2 2 0 0 0 1.67.9H18a2 2 0 0 1 2 2v2" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="menu-item-icon">
+          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
         </svg>
-        Projects
+        <span>Projects</span>
       </li>
       <li role="menuitem" onclick="slowScroll('experience')">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-          <rect width="20" height="14" x="2" y="6" rx="2" />
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="menu-item-icon">
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
         </svg>
-        Experience
+        <span>Experience</span>
       </li>
       <li role="menuitem" onclick="slowScroll('achievements')">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
-          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
-          <path d="M4 22h16"></path>
-          <path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path>
-          <path d="M12 2a6 6 0 0 1 6 6c0 3-2 6-6 6S6 11 6 8a6 6 0 0 1 6-6z"></path>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="menu-item-icon">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+          <path d="M4 22h16" />
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
         </svg>
-        Achievements
+        <span>Achievements</span>
       </li>
       <li role="menuitem" onclick="slowScroll('contact')">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+          stroke-linejoin="round" class="menu-item-icon">
           <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
           <rect x="2" y="4" width="20" height="16" rx="2" />
         </svg>
-        Contact
+        <span>Contact</span>
+      </li>
+      <li role="menuitem" class="mobile-resume-item">
+        <a href="./files/Abhinav_Final_Resume.pdf" class="mobile-resume-btn" target="_blank" download>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+            stroke-linejoin="round" class="menu-item-icon">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+            <polyline points="14 2 14 8 20 8" />
+            <line x1="16" y1="13" x2="8" y2="13" />
+            <line x1="16" y1="17" x2="8" y2="17" />
+          </svg>
+          <span>Resume</span>
+        </a>
       </li>
     </ul>
   </nav>
 
   <!-- Hero Section -->
-  <section id="hero" class="hero">
-    <div class="hero-content">
-      <div class="hero-left">
-        <div class="intro-badge">HELLO, I'M</div>
+  <section id="hero" class="hero-section">
+    <!-- Matrix Dot Grid Background -->
+    <div class="hero-dot-grid"></div>
+    <div class="hero-glow-center"></div>
 
-        <div class="hero-text">
-          <h1 class="name gradient-text-dark">
-            Abhinav Dasari
-          </h1>
-
-          <h2 class="role">
-            <span id="typingText" class="gradient-text-animated"></span>
-            <span class="cursor">|</span>
-          </h2>
-        </div>
-
-        <p class="subtitle">
-          Learning to turn data into clear, actionable insights.
-        </p>
-
-        <div class="hero-actions">
-          <a href="./files/Abhinav_Final_Resume.pdf" class="btn-primary" target="_blank" download>
-            Download Resume
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-icon">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-              <polyline points="7 10 12 15 17 10"></polyline>
-              <line x1="12" y1="15" x2="12" y2="3"></line>
-            </svg>
-          </a>
-        </div>
-
-        <div class="socials">
-
-          <a href="https://github.com/280205-Abhi" class="icon-btn" aria-label="GitHub" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-              <path d="M9 18c-4.51 2-5-2-7-2" />
-            </svg>
-          </a>
-
-          <a href="https://www.linkedin.com/in/abhinavdasari28/" class="icon-btn" aria-label="LinkedIn" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-              <rect width="4" height="12" x="2" y="9" />
-              <circle cx="4" cy="4" r="2" />
-            </svg>
-          </a>
-
-          <a href="mailto:d.abhinav2802@gmail.com" class="icon-btn" aria-label="Email" target="_blank">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-              stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-              <rect x="2" y="4" width="20" height="16" rx="2" />
-            </svg>
-          </a>
-        </div>
-
-        <div class="scroll-indicator" onclick="slowScroll('about')" role="button" tabindex="0"
-          aria-label="Scroll to About section">
-          <span>Scroll to Explore</span>
-          <svg class="bounce" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 9l6 6 6-6" />
-          </svg>
-        </div>
+    <div class="hero-container">
+      <!-- Status Badge -->
+      <div class="availability-badge">
+        <span class="pulse-dot"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round" class="badge-icon">
+          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
+          <circle cx="12" cy="10" r="3" />
+        </svg>
+        <span>Available for new opportunities</span>
       </div>
 
-      <div class="hero-right">
-        <div class="hero-glow"></div>
-        <div class="flip-card">
-          <div class="flip-card-inner">
-            <div class="flip-card-front">
-              <img src="./files/profile.jpg" alt="Avatar" class="flip-photo">
+      <!-- Pre-heading -->
+      <p class="hero-greeting">Hi, my name is</p>
+
+      <!-- Main Name Heading -->
+      <h1 class="hero-name">Abhinav Dasari</h1>
+
+      <!-- Role Subheading -->
+      <h2 class="hero-role">
+        I'm a <span id="typingText" class="highlight-emerald"></span><span class="cursor">|</span>
+      </h2>
+
+      <!-- Description -->
+      <p class="hero-description">
+        I turn complex problems into elegant, performant software. Specializing in scalable architectures, delightful
+        user experiences, and the occasional late-night refactor.
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-buttons">
+        <button class="btn-emerald-primary" onclick="slowScroll('projects')">
+          <span>View My Work</span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+
+        <button class="btn-dark-secondary" onclick="slowScroll('contact')">
+          Let's Connect
+        </button>
+      </div>
+
+      <!-- Social Icons -->
+      <div class="hero-socials">
+        <a href="https://github.com/280205-Abhi" class="hero-social-btn" aria-label="GitHub" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+            <path d="M9 18c-4.51 2-5-2-7-2" />
+          </svg>
+        </a>
+
+        <a href="https://www.linkedin.com/in/abhinavdasari28/" class="hero-social-btn" aria-label="LinkedIn"
+          target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+            <rect width="4" height="12" x="2" y="9" />
+            <circle cx="4" cy="4" r="2" />
+          </svg>
+        </a>
+
+        <a href="mailto:d.abhinav2802@gmail.com" class="hero-social-btn" aria-label="Email" target="_blank">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+          </svg>
+        </a>
+      </div>
+
+      <!-- Mouse Scroll Indicator -->
+      <div class="scroll-mouse" onclick="slowScroll('about')" role="button" tabindex="0"
+        aria-label="Scroll to About section">
+        <div class="scroll-wheel"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="about-section">
+    <div class="about-container">
+      <p class="about-subhead">01. About Me</p>
+      <h2 class="about-title-main">Who I Am</h2>
+      <p class="about-subtitle">Where clean engineering meets rigorous data science.</p>
+
+      <div class="about-grid-new">
+        <!-- Left: Profile Tech HUD Card with 3D Tilt -->
+        <div class="profile-card-wrapper" id="profileCardWrapper">
+          <div class="profile-card" id="profileCard">
+            <!-- HUD Corner Brackets -->
+            <span class="hud-bracket top-left"></span>
+            <span class="hud-bracket top-right"></span>
+            <span class="hud-bracket bottom-left"></span>
+            <span class="hud-bracket bottom-right"></span>
+
+            <!-- Floating Tech Badges -->
+            <div class="hud-badge top-left-badge">{ }</div>
+            <div class="hud-badge top-right-badge">&lt;/&gt;</div>
+            <div class="hud-badge bottom-left-badge">AI</div>
+            <div class="hud-badge bottom-right-badge">SQL</div>
+            <div class="hud-badge bottom-center-badge">
+              <span class="online-pulse-dot"></span> &lt;online /&gt;
             </div>
-            <div class="profile-card-wrapper">
-              <div class="profile-card">
-                <div class="profile-avatar">AD</div>
-                <h3 class="profile-name">Abhinav Dasari</h3>
-                <p class="profile-role">Aspiring Data Scientist</p>
-                <div class="profile-divider"></div>
-                <div class="profile-info">
-                  <div class="profile-info-item">
-                    <span class="info-label">Degree</span>
-                    <span class="info-value">B.Tech IT (4th Yr)</span>
-                  </div>
-                  <div class="profile-info-item">
-                    <span class="info-label">Focus</span>
-                    <span class="info-value">Data & ML</span>
-                  </div>
-                  <div class="profile-info-item">
-                    <span class="info-label">Status</span>
-                    <span class="info-value">Seeking Internships</span>
-                  </div>
-                </div>
+
+            <!-- Profile Image Container -->
+            <div class="profile-img-container">
+              <img src="./files/profile.png" alt="Abhinav Dasari" class="profile-img" />
+              <div class="scanline-overlay"></div>
+              <div class="card-glare"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Bio + Categorized Tech Stack -->
+        <div class="about-info-col">
+          <p class="about-bio-text">
+            I'm a software engineer and aspiring data scientist based in India with a passion for building tools that
+            make data clear and software performant.
+          </p>
+          <p class="about-bio-text">
+            My journey started with exploring patterns in data and writing scripts — today, I architect systems, data
+            pipelines, and machine learning models. I believe great software is born at the intersection of simplicity,
+            performance, and empathy. I care deeply about clean abstractions, thorough testing, and documentation that
+            doesn't suck.
+          </p>
+
+          <!-- Skills Categories -->
+          <div class="skills-categories">
+            <!-- Languages -->
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <span class="icon">&lt;/&gt;</span>
+                <span>Languages</span>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">SQL</span>
+                <span class="skill-pill">TypeScript</span>
+                <span class="skill-pill">JavaScript</span>
+                <span class="skill-pill">HTML/CSS</span>
+              </div>
+            </div>
+
+            <!-- Frameworks -->
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <span class="icon">❖</span>
+                <span>Frameworks</span>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-pill">React</span>
+                <span class="skill-pill">Next.js</span>
+                <span class="skill-pill">Node.js</span>
+                <span class="skill-pill">FastAPI</span>
+                <span class="skill-pill">Flask</span>
+                <span class="skill-pill">PyTorch</span>
+              </div>
+            </div>
+
+            <!-- DevTools -->
+            <div class="skill-group">
+              <div class="skill-group-title">
+                <span class="icon">⚡</span>
+                <span>DevTools & Analytics</span>
+              </div>
+              <div class="skill-tags">
+                <span class="skill-pill">Power BI</span>
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">MongoDB</span>
+                <span class="skill-pill">Pandas</span>
+                <span class="skill-pill">Scikit-learn</span>
               </div>
             </div>
           </div>
@@ -264,256 +343,241 @@
     </div>
   </section>
 
-  <section id="about" class="about-section">
-    <!-- Heading -->
-    <div class="about-container">
-      <p class="about-label">0.1 ABOUT ME</p>
-      <h2 class="about-title">
-        Get to know <span class="gradient-text-animated">me</span>
-      </h2>
-
-      <!-- Grid -->
-      <div class="about-grid">
-
-        <!-- Card moved to Hero Section -->
-
-        <!-- Text + Stack -->
-        <div class="about-content">
-          <p class="about-text">
-            I'm a
-            <span class="about-highlight playfair-display">3rd-Year B.Tech IT Student</span>
-            and
-            <span class="about-highlight playfair-display">Aspiring Data Scientist</span>
-            with a strong interest in turning raw, complex data into meaningful
-            insights and clear stories. I enjoy exploring patterns, uncovering
-            trends, and simplifying complexity to support informed decision-making.
-          </p>
-
-          <p class="about-text mt-paragraph">
-            I work across
-            <span class="about-highlight playfair-display">Data Analysis, Visualization, and Statistical
-              Techniques</span>,
-            building analytical workflows and dashboards using Python, SQL,
-            and modern analytics tools. Curious by nature, I'm continuously
-            learning and refining my skills to grow as a data professional.
-          </p>
-
-          <!-- Tech Stack -->
-          <div class="tech-stack" id="tech_stack"></div>
-
-        </div>
-      </div>
-  </section>
-
+  <!-- PROJECTS SECTION -->
   <section id="projects" class="projects-section">
     <div class="projects-container">
 
       <div class="projects-heading">
-        <p class="about-label">0.2 PROJECTS</p>
-        <h2 class="about-title">
-          Featured <span class="gradient-text-animated">Projects</span>
-        </h2>
+        <div class="projects-label-row">
+          <span class="proj-num">02. Projects</span>
+        </div>
+        <h2 class="projects-title">Things I've Built</h2>
+        <p class="projects-subtitle">Selected work — pick one to inspect.</p>
       </div>
 
-      <!-- Cards injected by JS -->
-      <div class="projects-grid" id="projects-grid"></div>
+      <div class="projects-layout">
+        <div class="projects-selector-list" id="projects-selector-list" role="tablist"></div>
+        <div class="projects-inspector-window" id="projects-inspector-window"></div>
+      </div>
 
     </div>
   </section>
 
   <!-- EXPERIENCE SECTION -->
   <section id="experience" class="experience-section">
-    <div class="experience-heading">
-      <p class="about-label">0.3 EXPERIENCE</p>
-      <h2 class="about-title">
-        My <span class="gradient-text-animated">Journey</span>
-      </h2>
-    </div>
     <div class="experience-container">
-      <div class="timeline" id="timeline"></div>
+
+      <div class="experience-heading">
+        <div class="experience-label-row">
+          <span class="exp-num">03. Experience</span>
+        </div>
+        <h2 class="experience-title">Experience</h2>
+        <p class="experience-git-cmd">git log --author='abhinav' --graph</p>
+      </div>
+
+      <div class="git-terminal-window">
+        <div class="git-term-header">
+          <div class="git-term-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="git-term-title">abhinav@career: ~/history</span>
+          <span class="git-term-status" id="git-term-status-text">main ↑ 3 commits</span>
+        </div>
+
+        <div class="git-term-body">
+          <div class="git-commit-list" id="experience-tabs" role="tablist"></div>
+          <div class="git-commit-detail" id="experience-detail"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- ACHIEVEMENTS SECTION -->
   <section id="achievements" class="achievements-section">
-    <div class="achievements-heading">
-      <p class="about-label">0.4 ACHIEVEMENTS</p>
-      <h2 class="about-title">
-        Milestones & <span class="gradient-text-animated">Recognition</span>
-      </h2>
-      <p class="achievements-subtitle">
-        A collection of moments that mark my journey of growth, learning, and impact.
-      </p>
-    </div>
     <div class="achievements-container">
-      <div class="achievements-grid" id="achievements-grid"></div>
+
+      <div class="achievements-heading">
+        <div class="achievements-label-row">
+          <span class="achieve-num">04. Achievements</span>
+        </div>
+        <h2 class="achievements-title">Milestones & Recognition</h2>
+        <p class="achievements-cmd">cat ./milestones/verified_achievements.json</p>
+      </div>
+
+      <div class="achievements-window">
+        <div class="achieve-win-header">
+          <div class="achieve-win-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="achieve-win-title">abhinav@achievements: ~/milestones</span>
+          <span class="achieve-win-status"><span class="online-pulse-dot"></span> 2 MILESTONES VERIFIED</span>
+        </div>
+
+        <div class="achieve-win-body">
+          <div class="achievements-grid" id="achievements-grid"></div>
+        </div>
+      </div>
+
     </div>
   </section>
 
   <!-- CONTACT SECTION -->
   <section id="contact" class="contact-section">
-    <div class="contact-heading">
-      <p class="about-label">0.5 CONTACT</p>
-      <h2 class="about-title">
-        Get In <span class="gradient-text-animated">Touch</span>
-      </h2>
-      <p class="contact-subtitle">
-        I'm currently seeking Summer/Fall internship opportunities to apply my data science skills in real-world
-        environments.
-        Whether you have a question or just want to say hi — my inbox is open!
-      </p>
-    </div>
     <div class="contact-container">
+
+      <div class="contact-heading">
+        <p class="contact-label">05. Contact</p>
+        <h2 class="contact-title">Get In Touch</h2>
+        <p class="contact-subtitle">Have a project in mind or just want to say hi? My inbox is always open.</p>
+      </div>
+
       <div class="contact-grid">
 
-        <!-- Contact Cards -->
-        <div class="contact-cards">
-
-          <a href="mailto:d.abhinav2802@gmail.com" class="contact-card">
-            <div class="contact-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
+        <!-- Contact Info Cards Column -->
+        <div class="contact-info-col">
+          <a href="mailto:d.abhinav2802@gmail.com" class="contact-info-card">
+            <div class="contact-info-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
                 <rect x="2" y="4" width="20" height="16" rx="2" />
               </svg>
             </div>
-            <div class="contact-card-text">
-              <span class="contact-card-label">Email</span>
-              <span class="contact-card-value">d.abhinav2802@gmail.com</span>
-            </div>
-            <div class="contact-card-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
+            <div class="contact-info-text">
+              <span class="contact-info-label">Email</span>
+              <span class="contact-info-value">d.abhinav2802@gmail.com</span>
             </div>
           </a>
 
-          <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" class="contact-card">
-            <div class="contact-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect width="4" height="12" x="2" y="9" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </div>
-            <div class="contact-card-text">
-              <span class="contact-card-label">LinkedIn</span>
-              <span class="contact-card-value">linkedin.com/in/abhinavdasari28</span>
-            </div>
-            <div class="contact-card-arrow">
+          <a href="https://github.com/280205-Abhi" target="_blank" class="contact-info-card">
+            <div class="contact-info-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
-            </div>
-          </a>
-
-          <a href="https://github.com/280205-Abhi" target="_blank" class="contact-card">
-            <div class="contact-card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
                 stroke-linejoin="round">
                 <path
                   d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
                 <path d="M9 18c-4.51 2-5-2-7-2" />
               </svg>
             </div>
-            <div class="contact-card-text">
-              <span class="contact-card-label">GitHub</span>
-              <span class="contact-card-value">github.com/280205-Abhi</span>
-            </div>
-            <div class="contact-card-arrow">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M7 17L17 7M17 7H7M17 7v10" />
-              </svg>
+            <div class="contact-info-text">
+              <span class="contact-info-label">GitHub</span>
+              <span class="contact-info-value">github.com/280205-Abhi</span>
             </div>
           </a>
 
-        </div>
-
-        <!-- Contact Form -->
-        <div class="contact-form-wrapper">
-          <div class="contact-form-card">
-
-            <div class="form-group">
-              <label class="form-label">Name</label>
-              <input type="text" class="form-input" placeholder="Your name" id="form-name" />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Email</label>
-              <input type="email" class="form-input" placeholder="your@email.com" id="form-email" />
-            </div>
-
-            <div class="form-group">
-              <label class="form-label">Message</label>
-              <textarea class="form-input form-textarea" placeholder="What's on your mind?"
-                id="form-message"></textarea>
-            </div>
-
-            <button class="form-submit" id="form-submit" onclick="handleFormSubmit()">
-              <span id="submit-text">Send Message</span>
+          <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" class="contact-info-card">
+            <div class="contact-info-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
                 stroke-linejoin="round">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
               </svg>
-            </button>
+            </div>
+            <div class="contact-info-text">
+              <span class="contact-info-label">LinkedIn</span>
+              <span class="contact-info-value">linkedin.com/in/abhinavdasari28</span>
+            </div>
+          </a>
+        </div>
 
-            <p class="form-note" id="form-note"></p>
-
+        <!-- Contact Form Card Column -->
+        <div class="contact-form-card">
+          <div class="form-group">
+            <label class="form-label" for="form-name">Name</label>
+            <input type="text" class="form-input" placeholder="Your name" id="form-name" />
           </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-email">Email</label>
+            <input type="email" class="form-input" placeholder="you@example.com" id="form-email" />
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="form-message">Message</label>
+            <textarea class="form-input form-textarea" placeholder="Tell me about your project..."
+              id="form-message"></textarea>
+          </div>
+
+          <button class="form-submit" id="form-submit" onclick="handleFormSubmit()">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round" class="send-icon">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+            <span id="submit-text">Send Message</span>
+          </button>
+
+          <p class="form-note" id="form-note"></p>
         </div>
 
       </div>
+
     </div>
   </section>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <div class="footer-container">
 
-      <!-- Copyright -->
-      <div class="footer-copy">
-        <span>© <span id="footer-year"></span> Built by</span>
-        <span class="footer-name">Abhinav</span>
+      <div class="footer-top-row">
+        <!-- Logo & Subline -->
+        <div class="footer-brand">
+          <div class="logo-code" onclick="scrollToTop()">
+            <span class="code-bracket">&lt;</span>
+            <span class="code-name">Abhinav</span>
+            <span class="code-bracket">/&gt;</span>
+          </div>
+          <p class="footer-subtext">Designed & Built by Abhinav Dasari</p>
+        </div>
+
+        <!-- Social Icons & Scroll Top -->
+        <div class="footer-actions">
+          <div class="footer-socials">
+            <a href="https://github.com/280205-Abhi" target="_blank" aria-label="GitHub" class="footer-social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                <path d="M9 18c-4.51 2-5-2-7-2" />
+              </svg>
+            </a>
+            <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" aria-label="LinkedIn"
+              class="footer-social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect width="4" height="12" x="2" y="9" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a href="mailto:d.abhinav2802@gmail.com" aria-label="Email" class="footer-social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
+                <rect x="2" y="4" width="20" height="16" rx="2" />
+              </svg>
+            </a>
+          </div>
+
+          <button class="footer-scroll-top" onclick="scrollToTop()" aria-label="Back to top">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="12" y1="19" x2="12" y2="5"></line>
+              <polyline points="5 12 12 5 19 12"></polyline>
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <!-- Social Links -->
-      <div class="footer-socials">
-        <a href="https://github.com/280205-Abhi" aria-label="GitHub" class="footer-icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path
-              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-            <path d="M9 18c-4.51 2-5-2-7-2" />
-          </svg>
-        </a>
-        <a href="https://www.linkedin.com/in/abhinavdasari28/" aria-label="LinkedIn" class="footer-icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect width="4" height="12" x="2" y="9" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
-        <a href="mailto:d.abhinav2802@gmail.com" aria-label="Mail" class="footer-icon-btn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-            stroke-linejoin="round">
-            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-          </svg>
-        </a>
+      <!-- Bottom Centered Copyright -->
+      <div class="footer-bottom-row">
+        <p class="copyright-text">© <span id="footer-year"></span> Abhinav Dasari. All rights reserved.</p>
       </div>
-
-      <!-- Back to Top -->
-      <button class="footer-top-btn" onclick="scrollToTop()" aria-label="Back to top">
-        <span>Back to top</span>
-        <svg class="arrow-up-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M18 15l-6-6-6 6" />
-        </svg>
-      </button>
 
     </div>
   </footer>
