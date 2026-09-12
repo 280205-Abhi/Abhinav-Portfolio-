@@ -879,7 +879,7 @@ svg {
 .proj-num {
   font-family: var(--font-mono);
   color: #10b981;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
@@ -1300,7 +1300,7 @@ svg {
 .exp-num {
   font-family: var(--font-mono);
   color: #10b981;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
@@ -2146,7 +2146,7 @@ svg {
 .achieve-num {
   font-family: var(--font-mono);
   color: #10b981;
-  font-size: 1rem;
+  font-size: 0.85rem;
   font-weight: 600;
 }
 
@@ -2489,7 +2489,7 @@ svg {
 .contact-label {
   font-family: "JetBrains Mono", monospace;
   color: #10b981;
-  font-size: 1.05rem;
+  font-size: 0.85rem;
   font-weight: 500;
   margin-bottom: 8px;
 }
@@ -2504,12 +2504,12 @@ svg {
 }
 
 .contact-subtitle {
-  font-family: "Inter", sans-serif;
-  font-size: 1rem;
-  color: #9ca3af;
-  max-width: 600px;
-  margin: 0 auto;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: #64748b;
+  margin-top: 4px;
   line-height: 1.6;
+  margin: 0 auto;
 }
 
 /* CONTACT GRID: Left Cards + Right Form */
@@ -3003,7 +3003,7 @@ body {
   .exp-num,
   .achieve-num,
   .contact-label {
-    font-size: 0.78rem !important;
+    font-size: 0.7rem !important;
     font-weight: 600 !important;
     margin-bottom: 4px !important;
   }
