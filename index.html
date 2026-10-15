@@ -4,22 +4,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhinav Dasari</title>
+  <title>Abhinav Dasari | Data Analyst & SDE Portfolio</title>
   <meta name="description"
-    content="Portfolio of Abhinav Dasari, an aspiring Data Scientist and Information Technology student specializing in data analysis and machine learning." />
-  <meta property="og:title" content="Abhinav Dasari | Aspiring Data Scientist" />
-  <meta property="og:description"
-    content="Portfolio of Abhinav Dasari, an aspiring Data Scientist and Information Technology student specializing in data analysis and machine learning." />
-  <meta property="og:image" content="./files/profile.jpg" />
+    content="Portfolio of Abhinav Dasari, a final-year B.Tech IT student at K. J. Somaiya Institute of Technology specializing in Data Analysis, SQL, Python, and actionable dashboards." />
+
+  <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website" />
+  <meta property="og:title" content="Abhinav Dasari | Data Analyst & SDE Portfolio" />
+  <meta property="og:description"
+    content="Final-year IT student who turns noisy data into meaningful insights. Open to Data Analyst and SDE roles." />
+  <meta property="og:image" content="./files/profile.png" />
+  <meta property="og:url" content="https://280205-abhi.github.io/Abhinav-Portfolio-/" />
+
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="./files/AD%20logo.png" />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Space+Grotesk:wght@300..700&display=swap"
-    rel="stylesheet">
-  <!-- Matomo -->
+
+  <!-- Matomo Analytics -->
   <script>
     var _paq = window._paq = window._paq || [];
     _paq.push(['trackPageView']);
@@ -32,558 +40,851 @@
       g.async = true; g.src = 'https://cdn.matomo.cloud/abhi-github.matomo.cloud/matomo.js'; s.parentNode.insertBefore(g, s);
     })();
   </script>
-  <!-- End Matomo Code -->
+  <!-- End Matomo Analytics -->
 </head>
 
 <body>
+  <!-- Scroll Progress Bar -->
+  <div id="scroll-progress" aria-hidden="true"></div>
 
-  <!-- Scroll Progress -->
-  <div id="scroll-progress"></div>
-
-  <!-- Dynamic Navbar -->
-  <nav class="navbar" id="mainNavbar">
-    <div class="nav-container">
-
-      <!-- Logo -->
-      <div class="logo-code" onclick="scrollToTop()">
-        <span class="code-bracket">&lt;</span>
-        <span class="code-name">Abhinav</span>
-        <span class="code-bracket">/&gt;</span>
-      </div>
-
-      <div class="pill-divider-desktop"></div>
-
-      <!-- Desktop Links -->
-      <ul class="nav-links">
-        <li onclick="slowScroll('about')">
-          <span class="nav-num">01.</span> About
-        </li>
-        <li onclick="slowScroll('projects')">
-          <span class="nav-num">02.</span> Projects
-        </li>
-        <li onclick="slowScroll('experience')">
-          <span class="nav-num">03.</span> Experience
-        </li>
-        <li onclick="slowScroll('achievements')">
-          <span class="nav-num">04.</span> Achievements
-        </li>
-        <li onclick="slowScroll('contact')">
-          <span class="nav-num">05.</span> Contact
-        </li>
-      </ul>
-
-      <!-- Resume Button -->
-      <a href="./files/Abhinav_Final_Resume.pdf" class="nav-resume-btn" target="_blank" download>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round">
-          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-          <polyline points="14 2 14 8 20 8"></polyline>
-          <line x1="16" y1="13" x2="8" y2="13"></line>
-          <line x1="16" y1="17" x2="8" y2="17"></line>
-        </svg>
-        <span>Resume</span>
-      </a>
-
-      <!-- Mobile Hamburger Button -->
-      <button class="menu-btn" id="menuBtn" onclick="toggleMenu()" aria-label="Toggle menu" aria-expanded="false">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-
-    </div>
-
-    <!-- Mobile Menu -->
-    <ul class="mobile-menu" id="mobileMenu" role="menu">
-      <li role="menuitem" onclick="slowScroll('about')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="menu-item-icon">
-          <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-          <circle cx="12" cy="7" r="4" />
-        </svg>
-        <span>About</span>
-      </li>
-      <li role="menuitem" onclick="slowScroll('projects')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="menu-item-icon">
-          <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z" />
-        </svg>
-        <span>Projects</span>
-      </li>
-      <li role="menuitem" onclick="slowScroll('experience')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="menu-item-icon">
-          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-        </svg>
-        <span>Experience</span>
-      </li>
-      <li role="menuitem" onclick="slowScroll('achievements')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="menu-item-icon">
-          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
-          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
-          <path d="M4 22h16" />
-          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
-          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
-          <path d="M18 2H6v7a6 6 0 0 0 12 0V2z" />
-        </svg>
-        <span>Achievements</span>
-      </li>
-      <li role="menuitem" onclick="slowScroll('contact')">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-          stroke-linejoin="round" class="menu-item-icon">
-          <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-          <rect x="2" y="4" width="20" height="16" rx="2" />
-        </svg>
-        <span>Contact</span>
-      </li>
-      <li role="menuitem" class="mobile-resume-item">
-        <a href="./files/Abhinav_Final_Resume.pdf" class="mobile-resume-btn" target="_blank" download>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" class="menu-item-icon">
-            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-            <polyline points="14 2 14 8 20 8" />
-            <line x1="16" y1="13" x2="8" y2="13" />
-            <line x1="16" y1="17" x2="8" y2="17" />
-          </svg>
-          <span>Resume</span>
-        </a>
-      </li>
-    </ul>
-  </nav>
-
-  <!-- Hero Section -->
-  <section id="hero" class="hero-section">
-    <!-- Matrix Dot Grid Background -->
-    <div class="hero-dot-grid"></div>
-    <div class="hero-glow-center"></div>
-
-    <div class="hero-container">
-      <!-- Status Badge -->
-      <div class="availability-badge">
-        <span class="pulse-dot"></span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-          stroke-linecap="round" stroke-linejoin="round" class="badge-icon">
-          <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-          <circle cx="12" cy="10" r="3" />
-        </svg>
-        <span>Available for new opportunities</span>
-      </div>
-
-      <!-- Pre-heading -->
-      <p class="hero-greeting">Hi, my name is</p>
-
-      <!-- Main Name Heading -->
-      <h1 class="hero-name">Abhinav Dasari</h1>
-
-      <!-- Role Subheading -->
-      <h2 class="hero-role">
-        I'm a <span id="typingText" class="highlight-emerald"></span><span class="cursor">|</span>
-      </h2>
-
-      <!-- Description -->
-      <p class="hero-description">
-        I turn complex problems into elegant, performant software. Specializing in scalable architectures, delightful
-        user experiences, and the occasional late-night refactor.
-      </p>
-
-      <!-- Action Buttons -->
-      <div class="hero-buttons">
-        <button class="btn-emerald-primary" onclick="slowScroll('projects')">
-          <span>View My Work</span>
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"></line>
-            <polyline points="12 5 19 12 12 19"></polyline>
-          </svg>
-        </button>
-
-        <button class="btn-dark-secondary" onclick="slowScroll('contact')">
-          Let's Connect
-        </button>
-      </div>
-
-      <!-- Social Icons -->
-      <div class="hero-socials">
-        <a href="https://github.com/280205-Abhi" class="hero-social-btn" aria-label="GitHub" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path
-              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-            <path d="M9 18c-4.51 2-5-2-7-2" />
-          </svg>
+  <!-- Sticky Navbar -->
+  <header class="navbar-wrapper">
+    <nav class="navbar" id="navbar" aria-label="Main Navigation">
+      <div class="nav-container">
+        <!-- Logo Text & Mark -->
+        <a href="#hero" class="brand-logo" aria-label="Abhinav Dasari Home">
+          <img src="files/AD logo.png" alt="AD logo" class="brand-logo-img" width="30" height="30" />
+          <span>Abhinav Dasari</span>
         </a>
 
-        <a href="https://www.linkedin.com/in/abhinavdasari28/" class="hero-social-btn" aria-label="LinkedIn"
-          target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-            <rect width="4" height="12" x="2" y="9" />
-            <circle cx="4" cy="4" r="2" />
-          </svg>
-        </a>
+        <!-- Desktop Navigation Links -->
+        <ul class="nav-menu" id="navMenu">
+          <li><a href="#projects" class="nav-link">Projects</a></li>
+          <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
 
-        <a href="mailto:d.abhinav2802@gmail.com" class="hero-social-btn" aria-label="Email" target="_blank">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-            stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-            <rect x="2" y="4" width="20" height="16" rx="2" />
-          </svg>
-        </a>
-      </div>
-
-      <!-- Mouse Scroll Indicator -->
-      <div class="scroll-mouse" onclick="slowScroll('about')" role="button" tabindex="0"
-        aria-label="Scroll to About section">
-        <div class="scroll-wheel"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- About Section -->
-  <section id="about" class="about-section">
-    <div class="about-container">
-      <p class="about-subhead">01. About Me</p>
-      <h2 class="about-title-main">Who I Am</h2>
-      <p class="about-subtitle">Where clean engineering meets rigorous data science.</p>
-
-      <div class="about-grid-new">
-        <!-- Left: Profile Tech HUD Card with 3D Tilt -->
-        <div class="profile-card-wrapper" id="profileCardWrapper">
-          <div class="profile-card" id="profileCard">
-            <!-- HUD Corner Brackets -->
-            <span class="hud-bracket top-left"></span>
-            <span class="hud-bracket top-right"></span>
-            <span class="hud-bracket bottom-left"></span>
-            <span class="hud-bracket bottom-right"></span>
-
-            <!-- Floating Tech Badges -->
-            <div class="hud-badge top-left-badge">{ }</div>
-            <div class="hud-badge top-right-badge">&lt;/&gt;</div>
-            <div class="hud-badge bottom-left-badge">AI</div>
-            <div class="hud-badge bottom-right-badge">SQL</div>
-            <div class="hud-badge bottom-center-badge">
-              <span class="online-pulse-dot"></span> &lt;online /&gt;
-            </div>
-
-            <!-- Profile Image Container -->
-            <div class="profile-img-container">
-              <img src="./files/profile.png" alt="Abhinav Dasari" class="profile-img" />
-              <div class="scanline-overlay"></div>
-              <div class="card-glare"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Right: Bio + Categorized Tech Stack -->
-        <div class="about-info-col">
-          <p class="about-bio-text">
-            I'm a software engineer and aspiring data scientist based in India with a passion for building tools that
-            make data clear and software performant.
-          </p>
-          <p class="about-bio-text">
-            My journey started with exploring patterns in data and writing scripts — today, I architect systems, data
-            pipelines, and machine learning models. I believe great software is born at the intersection of simplicity,
-            performance, and empathy. I care deeply about clean abstractions, thorough testing, and documentation that
-            doesn't suck.
-          </p>
-
-          <!-- Skills Categories -->
-          <div class="skills-categories">
-            <!-- Languages -->
-            <div class="skill-group">
-              <div class="skill-group-title">
-                <span class="icon">&lt;/&gt;</span>
-                <span>Languages</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-pill">Python</span>
-                <span class="skill-pill">SQL</span>
-                <span class="skill-pill">TypeScript</span>
-                <span class="skill-pill">JavaScript</span>
-                <span class="skill-pill">HTML/CSS</span>
-              </div>
-            </div>
-
-            <!-- Frameworks -->
-            <div class="skill-group">
-              <div class="skill-group-title">
-                <span class="icon">❖</span>
-                <span>Frameworks</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-pill">React</span>
-                <span class="skill-pill">Next.js</span>
-                <span class="skill-pill">Node.js</span>
-                <span class="skill-pill">FastAPI</span>
-                <span class="skill-pill">Flask</span>
-                <span class="skill-pill">PyTorch</span>
-              </div>
-            </div>
-
-            <!-- DevTools -->
-            <div class="skill-group">
-              <div class="skill-group-title">
-                <span class="icon">⚡</span>
-                <span>DevTools & Analytics</span>
-              </div>
-              <div class="skill-tags">
-                <span class="skill-pill">Power BI</span>
-                <span class="skill-pill">Git</span>
-                <span class="skill-pill">MongoDB</span>
-                <span class="skill-pill">Pandas</span>
-                <span class="skill-pill">Scikit-learn</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS SECTION -->
-  <section id="projects" class="projects-section">
-    <div class="projects-container">
-
-      <div class="projects-heading">
-        <div class="projects-label-row">
-          <span class="proj-num">02. Projects</span>
-        </div>
-        <h2 class="projects-title">Things I've Built</h2>
-        <p class="projects-subtitle">Selected work — pick one to inspect.</p>
-      </div>
-
-      <div class="projects-layout">
-        <div class="projects-selector-list" id="projects-selector-list" role="tablist"></div>
-        <div class="projects-inspector-window" id="projects-inspector-window"></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- EXPERIENCE SECTION -->
-  <section id="experience" class="experience-section">
-    <div class="experience-container">
-
-      <div class="experience-heading">
-        <div class="experience-label-row">
-          <span class="exp-num">03. Experience</span>
-        </div>
-        <h2 class="experience-title">Experience</h2>
-        <p class="experience-git-cmd">git log --author='abhinav' --graph</p>
-      </div>
-
-      <div class="git-terminal-window">
-        <div class="git-term-header">
-          <div class="git-term-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <span class="git-term-title">abhinav@career: ~/history</span>
-          <span class="git-term-status" id="git-term-status-text">main ↑ 3 commits</span>
-        </div>
-
-        <div class="git-term-body">
-          <div class="git-commit-list" id="experience-tabs" role="tablist"></div>
-          <div class="git-commit-detail" id="experience-detail"></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ACHIEVEMENTS SECTION -->
-  <section id="achievements" class="achievements-section">
-    <div class="achievements-container">
-
-      <div class="achievements-heading">
-        <div class="achievements-label-row">
-          <span class="achieve-num">04. Achievements</span>
-        </div>
-        <h2 class="achievements-title">Milestones & Recognition</h2>
-        <p class="achievements-cmd">cat ./milestones/verified_achievements.json</p>
-      </div>
-
-      <div class="achievements-window">
-        <div class="achieve-win-header">
-          <div class="achieve-win-dots">
-            <span class="dot red"></span>
-            <span class="dot yellow"></span>
-            <span class="dot green"></span>
-          </div>
-          <span class="achieve-win-title">abhinav@achievements: ~/milestones</span>
-          <span class="achieve-win-status"><span class="online-pulse-dot"></span> 2 MILESTONES VERIFIED</span>
-        </div>
-
-        <div class="achieve-win-body">
-          <div class="achievements-grid" id="achievements-grid"></div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- CONTACT SECTION -->
-  <section id="contact" class="contact-section">
-    <div class="contact-container">
-
-      <div class="contact-heading">
-        <p class="contact-label">05. Contact</p>
-        <h2 class="contact-title">Get In Touch</h2>
-        <p class="contact-subtitle">Have a project in mind or just want to say hi? My inbox is always open.</p>
-      </div>
-
-      <div class="contact-grid">
-
-        <!-- Contact Info Cards Column -->
-        <div class="contact-info-col">
-          <a href="mailto:d.abhinav2802@gmail.com" class="contact-info-card">
-            <div class="contact-info-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-              </svg>
-            </div>
-            <div class="contact-info-text">
-              <span class="contact-info-label">Email</span>
-              <span class="contact-info-value">d.abhinav2802@gmail.com</span>
-            </div>
-          </a>
-
-          <a href="https://github.com/280205-Abhi" target="_blank" class="contact-info-card">
-            <div class="contact-info-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path
-                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
-              </svg>
-            </div>
-            <div class="contact-info-text">
-              <span class="contact-info-label">GitHub</span>
-              <span class="contact-info-value">github.com/280205-Abhi</span>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" class="contact-info-card">
-            <div class="contact-info-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect width="4" height="12" x="2" y="9" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </div>
-            <div class="contact-info-text">
-              <span class="contact-info-label">LinkedIn</span>
-              <span class="contact-info-value">linkedin.com/in/abhinavdasari28</span>
-            </div>
-          </a>
-        </div>
-
-        <!-- Contact Form Card Column -->
-        <div class="contact-form-card">
-          <div class="form-group">
-            <label class="form-label" for="form-name">Name</label>
-            <input type="text" class="form-input" placeholder="Your name" id="form-name" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="form-email">Email</label>
-            <input type="email" class="form-input" placeholder="you@example.com" id="form-email" />
-          </div>
-
-          <div class="form-group">
-            <label class="form-label" for="form-message">Message</label>
-            <textarea class="form-input form-textarea" placeholder="Tell me about your project..."
-              id="form-message"></textarea>
-          </div>
-
-          <button class="form-submit" id="form-submit" onclick="handleFormSubmit()">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round" class="send-icon">
-              <line x1="22" y1="2" x2="11" y2="13"></line>
-              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+        <!-- Right Side Nav Actions -->
+        <div class="nav-actions">
+          <!-- Theme Toggle -->
+          <button id="themeToggle" class="theme-toggle" aria-label="Switch between light and dark mode"
+            title="Toggle theme">
+            <svg id="sunIcon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
             </svg>
-            <span id="submit-text">Send Message</span>
+            <svg id="moonIcon" class="theme-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
           </button>
 
-          <p class="form-note" id="form-note"></p>
-        </div>
+          <!-- Resume Button -->
+          <a href="files/Abhinav_Final_Resume.pdf" class="btn btn-outline nav-resume-btn" target="_blank"
+            rel="noopener noreferrer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="12" y1="18" x2="12" y2="12"></line>
+              <polyline points="9 15 12 18 15 15"></polyline>
+            </svg>
+            <span>Resume</span>
+          </a>
 
+          <!-- Mobile Hamburger Toggle -->
+          <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false"
+            aria-controls="mobileDropdown">
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+            <span class="hamburger-line"></span>
+          </button>
+        </div>
       </div>
 
-    </div>
-  </section>
+      <!-- Mobile Dropdown Menu -->
+      <div class="mobile-dropdown" id="mobileDropdown" aria-hidden="true">
+        <ul class="mobile-nav-list">
+          <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+          <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+          <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+          <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+          <li class="mobile-nav-cta">
+            <a href="files/Abhinav_Final_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+              Download Resume
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section id="hero" class="hero-section">
+      <div class="container hero-container">
+        <!-- Hero Text -->
+        <div class="hero-content">
+          <!-- Open to roles badge -->
+          <div class="status-badge">
+            <span class="status-dot" aria-hidden="true"></span>
+            <span>Open to Data Analyst / SDE roles</span>
+          </div>
+
+          <h1 class="hero-title">Hi, I'm Abhinav Dasari</h1>
+          <p class="hero-subline">
+            Final-year IT student who turns noisy data into meaningful insights.
+          </p>
+
+          <p class="hero-summary">
+            Specializing in exploratory data analysis, SQL querying, Python analytics, and interactive dashboards.
+            Passionate about building transparent, metric-driven solutions for real-world business decisions.
+          </p>
+
+          <!-- Action Buttons -->
+          <div class="hero-actions">
+            <a href="#projects" class="btn btn-primary">
+              View Projects
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </a>
+            <a href="files/Abhinav_Final_Resume.pdf" class="btn btn-secondary" target="_blank" rel="noopener noreferrer"
+              download>
+              Download Resume
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Social Icon Links -->
+          <div class="hero-socials">
+            <a href="https://github.com/280205-Abhi" class="social-link" target="_blank" rel="noopener noreferrer"
+              aria-label="GitHub Profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                </path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/abhinavdasari28/" class="social-link" target="_blank"
+              rel="noopener noreferrer" aria-label="LinkedIn Profile">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn</span>
+            </a>
+            <a href="mailto:d.abhinav2802@gmail.com" class="social-link" aria-label="Send Email">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              </svg>
+              <span>Email</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Profile Image -->
+        <div class="hero-visual">
+          <div class="profile-frame">
+            <img src="files/profile.png" alt="Abhinav Dasari portrait" class="profile-photo" width="320" height="320"
+              loading="eager" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Scan Recruiter Metric Strip -->
+      <div class="container">
+        <div class="stats-strip" aria-label="Key Highlights">
+          <div class="stat-item">
+            <span class="stat-number" data-target="96.55" data-suffix="%">0%</span>
+            <span class="stat-label">Model Accuracy (NeuroAI)</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="31994" data-format="comma">0</span>
+            <span class="stat-label">Duplicate Rows Cleaned</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="17">0</span>
+            <span class="stat-label">ML Models Benchmarked</span>
+          </div>
+          <div class="stat-divider" aria-hidden="true"></div>
+          <div class="stat-item">
+            <span class="stat-number" data-target="9.09" data-decimals="2">0.00</span>
+            <span class="stat-label">B.Tech CGPA / 10</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">About Me</h2>
+          <div class="section-title-bar" aria-hidden="true"></div>
+        </div>
+
+        <div class="about-card">
+          <div class="about-text-content">
+            <p>
+              I am a final-year B.Tech Information Technology student at K. J. Somaiya Institute of Technology, Mumbai
+              (graduating in 2027).
+            </p>
+            <p>
+              I focus on data analysis, SQL querying, Python analytics, and building intuitive dashboards that translate
+              messy datasets into actionable insights.
+            </p>
+            <p>
+              With practical experience in exploratory data analysis, machine learning classification, and database
+              querying, I enjoy diving into datasets to understand the operational context behind the numbers.
+            </p>
+            <p>
+              I am actively seeking entry-level Data Analyst roles and Software Development Engineer (SDE) / Backend
+              positions where I can contribute to data integrity and software reliability.
+            </p>
+          </div>
+
+          <!-- Academic summary box -->
+          <div class="education-card">
+            <div class="edu-badge">Education</div>
+            <h3 class="edu-degree">Bachelor of Technology (B.Tech) – Information Technology</h3>
+            <p class="edu-inst">K. J. Somaiya Institute of Technology, Mumbai</p>
+            <div class="edu-meta">
+              <span><strong>Graduation:</strong> 2023 – 2027 (Expected)</span>
+              <span><strong>CGPA:</strong> 9.09 / 10</span>
+            </div>
+            <p class="edu-coursework">
+              <strong>Coursework:</strong> Data Structures & Algorithms, Database Management Systems (DBMS), Statistics
+              & Probability, Operating Systems, Computer Networks.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Skills</h2>
+          <div class="section-title-bar" aria-hidden="true"></div>
+          <p class="section-subtitle">Technical skills, analytics tools, and core engineering concepts.</p>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Group 1: Data Analysis & Visualization -->
+          <div class="card skill-card">
+            <div class="skill-group-header">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+              </div>
+              <div>
+                <h3 class="skill-group-title">Data Analysis & Visualization</h3>
+                <p class="skill-group-desc">Core toolset for data cleaning, statistical evaluation, and interactive
+                  storytelling</p>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span class="chip chip-highlight">Python</span>
+              <span class="chip chip-highlight">SQL</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">NumPy</span>
+              <span class="chip chip-highlight">Power BI</span>
+              <span class="chip">Tableau</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Seaborn</span>
+              <span class="chip">Plotly</span>
+              <span class="chip">Excel</span>
+              <span class="chip">EDA</span>
+              <span class="chip">Data Cleaning</span>
+              <span class="chip">Statistics & Probability</span>
+            </div>
+          </div>
+
+          <!-- Group 2: Data Engineering -->
+          <div class="card skill-card">
+            <div class="skill-group-header">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <ellipse cx="12" cy="5" rx="9" ry="3"></ellipse>
+                  <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"></path>
+                  <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"></path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="skill-group-title">Data Engineering</h3>
+                <p class="skill-group-desc">Relational databases, API endpoints, and structured query management</p>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span class="chip chip-highlight">MySQL</span>
+              <span class="chip">MongoDB</span> <!-- TODO: confirm -->
+              <span class="chip">SQL Joins & CTEs</span>
+              <span class="chip">Window Functions</span>
+              <span class="chip">REST APIs</span>
+              <span class="chip">FastAPI</span>
+              <span class="chip">Flask</span>
+              <span class="chip">Data Ingestion Pipelines</span>
+            </div>
+          </div>
+
+          <!-- Group 3: Tools & Concepts -->
+          <div class="card skill-card">
+            <div class="skill-group-header">
+              <div class="skill-icon-wrapper" aria-hidden="true">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path
+                    d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z">
+                  </path>
+                </svg>
+              </div>
+              <div>
+                <h3 class="skill-group-title">Tools & Concepts</h3>
+                <p class="skill-group-desc">Version control, dashboard KPIs, and supporting development technologies</p>
+              </div>
+            </div>
+            <div class="skill-chips">
+              <span class="chip chip-highlight">Git & GitHub</span>
+              <span class="chip">KPI Formulation</span>
+              <span class="chip">Dashboards</span>
+              <span class="chip">TypeScript</span> <!-- TODO: confirm -->
+              <span class="chip">Next.js</span> <!-- TODO: confirm -->
+              <span class="chip">PyTorch</span> <!-- TODO: confirm -->
+              <span class="chip">HTML/CSS</span>
+              <span class="chip">React.js</span>
+              <span class="chip">Scikit-learn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="projects" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Projects</h2>
+          <div class="section-title-bar" aria-hidden="true"></div>
+          <p class="section-subtitle">Real-world data analysis, machine learning systems, and analytical dashboards.</p>
+        </div>
+
+        <!-- Filter Tabs -->
+        <div class="filter-container" role="tablist" aria-label="Project filter categories">
+          <button class="filter-tab active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="filter-tab" data-filter="data-analysis" role="tab" aria-selected="false">Data Analysis</button>
+          <button class="filter-tab" data-filter="ml" role="tab" aria-selected="false">Machine Learning</button>
+          <button class="filter-tab" data-filter="web" role="tab" aria-selected="false">Web / API</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project 1: NeuroAI -->
+          <article class="card project-card" data-category="ml web" data-project-id="neuroai">
+            <div class="project-header">
+              <div class="project-title-row">
+                <h3 class="project-title">NeuroAI — Clinical Decision Support for ASD</h3>
+                <span class="badge badge-accent">96.55% Acc</span>
+              </div>
+              <p class="project-problem">
+                ASD pre-screening suffers from diagnostic delays and lack of interpretable, multimodal clinical
+                justification.
+              </p>
+            </div>
+
+            <ul class="project-bullets">
+              <li>Engineered a multimodal clinical-support system integrating brain MRI, speech acoustics, and M-CHAT-R
+                questionnaire responses.</li>
+              <li>Benchmarked 17 models; implemented SHAP (TreeExplainer) and Grad-CAM++ to provide clear, visual
+                decision transparency for clinicians.</li>
+              <li>Developed a full-stack architecture with FastAPI backend and React frontend with automated PDF
+                diagnostic report generation.</li>
+            </ul>
+
+            <div class="project-result">
+              <strong>Key Result:</strong> Clinical ensemble (Random Forest) achieved 96.55% test accuracy; MRI ensemble
+              (ResNet18 + EfficientNet-B0) achieved 84.21% accuracy and 0.9117 AUC.
+            </div>
+
+            <div class="project-tech-chips">
+              <span class="chip">Python</span>
+              <span class="chip">PyTorch</span> <!-- TODO: confirm -->
+              <span class="chip">FastAPI</span>
+              <span class="chip">React</span>
+              <span class="chip">Scikit-learn</span>
+              <span class="chip">SHAP</span>
+              <span class="chip">Librosa</span>
+            </div>
+
+            <div class="project-card-footer">
+              <div class="project-links">
+                <a href="https://github.com/280205-Abhi/NeuroAI_ASD" class="btn-link" target="_blank"
+                  rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                    </path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="#" class="btn-link" onclick="openProjectModal('neuroai'); return false;">
+                  <!-- TODO: add link -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span>Details / Demo</span>
+                </a>
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('neuroai')">Inspect Details</button>
+            </div>
+          </article>
+
+          <!-- Project 2: Hotel Booking Analysis -->
+          <article class="card project-card" data-category="data-analysis" data-project-id="hotel">
+            <div class="project-header">
+              <div class="project-title-row">
+                <h3 class="project-title">Hotel Booking Cancellation & Revenue EDA</h3>
+                <span class="badge badge-accent">119k Records</span>
+              </div>
+              <p class="project-problem">
+                Unchecked cancellations distorted hotel revenue projections and created undetected revenue leakage.
+              </p>
+            </div>
+
+            <ul class="project-bullets">
+              <li>Cleaned 119,390 raw booking records, dropping 31,994 duplicate rows (~27%) first and repairing flawed
+                date datatypes to secure data integrity.</li>
+              <li>Calculated genuine revenue exclusively from non-cancelled bookings, establishing a distinct metric to
+                track revenue lost directly to cancellations.</li>
+              <li>Discovered the non-refundable deposit cancellation paradox where high-lead-time bookings suffered
+                higher cancellation rates due to rigid non-refundable policies.</li>
+            </ul>
+
+            <div class="project-result">
+              <strong>Key Result:</strong> Identified $22.97M actual revenue earned vs. $11.47M lost to cancellations,
+              generating 6 actionable pricing and cancellation policy recommendations.
+            </div>
+
+            <div class="project-tech-chips">
+              <span class="chip">Python</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">Matplotlib</span>
+              <span class="chip">Seaborn</span>
+              <span class="chip">Plotly</span>
+              <span class="chip">EDA</span>
+              <span class="chip">Data Cleaning</span>
+            </div>
+
+            <div class="project-card-footer">
+              <div class="project-links">
+                <a href="https://github.com/280205-Abhi/Hotel_Booking_Analysis" class="btn-link" target="_blank"
+                  rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                    </path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <a href="https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link"
+                  class="btn-link" target="_blank" rel="noopener noreferrer"> <!-- TODO: add link -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    aria-hidden="true">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span>Report</span>
+                </a>
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('hotel')">Inspect Details</button>
+            </div>
+          </article>
+
+          <!-- GitHub Ecosystem Analytics Project Card -->
+          <article class="card project-card" data-category="data-analysis web" data-project-id="github">
+            <div class="project-header">
+              <div class="project-title-row">
+                <h3 class="project-title">GitHub Open-Source Ecosystem Analytics</h3>
+                <span class="badge badge-accent">In Progress</span>
+              </div>
+              <p class="project-problem">
+                Stars alone don't show whether an open-source project is healthy or dying. This project measures it with
+                real activity data.
+              </p>
+            </div>
+
+            <ul class="project-bullets">
+              <li>Collecting repo, star, commit and contributor data using the official GitHub REST API.</li>
+              <li>Building a "thriving vs abandoned" project health score from activity signals.</li>
+              <li>Tracking how language popularity shifts over time within a topic.</li>
+              <li>Creating a searchable repo health dashboard with trend charts.</li>
+            </ul>
+
+            <div class="project-result">
+              <strong>Status:</strong> Data collection and health score in progress.
+              <!-- TODO: replace with a real result once shipped, e.g. "Analysed X repos across Y topics" -->
+            </div>
+
+            <div class="project-tech-chips">
+              <span class="chip">GitHub REST API</span>
+              <span class="chip">Python</span> <!-- TODO: confirm -->
+              <span class="chip">Pandas</span> <!-- TODO: confirm -->
+              <span class="chip">SQL</span> <!-- TODO: confirm -->
+            </div>
+
+            <div class="project-card-footer">
+              <div class="project-links">
+                <a href="https://github.com/280205-Abhi/YOUR_REPO" class="btn-link" target="_blank"
+                  rel="noopener noreferrer"> <!-- TODO: repo link -->
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path
+                      d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                    </path>
+                    <path d="M9 18c-4.51 2-5-2-7-2"></path>
+                  </svg>
+                  <span>Code</span>
+                </a>
+                <!-- TODO: add the Live Dashboard link only when it is deployed -->
+                <a href="https://YOUR_DASHBOARD_LINK" class="btn-link" target="_blank" rel="noopener noreferrer">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                    <polyline points="15 3 21 3 21 9"></polyline>
+                    <line x1="10" y1="14" x2="21" y2="3"></line>
+                  </svg>
+                  <span>Live Dashboard</span>
+                </a>
+              </div>
+              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('github')">Inspect Details</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Experience</h2>
+          <div class="section-title-bar" aria-hidden="true"></div>
+          <p class="section-subtitle">Internship and corporate data analytics simulations.</p>
+        </div>
+
+        <div class="timeline">
+          <!-- Item 1: TechAsia -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="card timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Full Stack Developer Intern</h3>
+                  <p class="timeline-company">TechAsia Mechatronics Pvt Ltd</p>
+                </div>
+                <span class="timeline-period">June 2025 – July 2025</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li>Developed frontend components using React.js for a live product showcase website displaying the
+                  company's mechatronics product catalog to prospective clients.</li>
+                <li>Managed and queried SQL database to retrieve and organize product data for frontend display.</li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="chip">React.js</span>
+                <span class="chip">SQL</span>
+                <span class="chip">JavaScript</span>
+                <span class="chip">HTML/CSS</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 2: Deloitte Forage -->
+          <div class="timeline-item">
+            <div class="timeline-dot" aria-hidden="true"></div>
+            <div class="card timeline-content">
+              <div class="timeline-header">
+                <div>
+                  <h3 class="timeline-role">Data Analytics Job Simulation</h3>
+                  <p class="timeline-company">Deloitte (via Forage)</p>
+                </div>
+                <span class="timeline-period">April 2026</span>
+              </div>
+              <ul class="timeline-bullets">
+                <li>Analyzed and cleaned raw business datasets to identify inconsistencies, remove errors, and prepare
+                  data for downstream analysis.</li>
+                <li>Built a Tableau dashboard to visualize key business metrics, enabling data-driven decision making.
+                </li>
+              </ul>
+              <div class="timeline-tags">
+                <span class="chip">Tableau</span>
+                <span class="chip">Data Analysis</span>
+                <span class="chip">Data Cleaning</span>
+                <span class="chip">Forensic Technology</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Achievements</h2>
+          <div class="section-title-bar" aria-hidden="true"></div>
+          <p class="section-subtitle">Verified hackathon awards and academic milestones.</p>
+        </div>
+
+        <div class="achievements-grid">
+          <!-- Achievement 1: SIH (Institute Round) -->
+          <div class="card achievement-card">
+            <div class="achievement-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                <path d="M4 22h16"></path>
+                <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                <path d="M18 2H6v7a6 6 0 0 0 12 0V2z"></path>
+              </svg>
+            </div>
+            <div class="achievement-content">
+              <div class="achievement-meta">
+                <span class="badge badge-accent">Institute Round Winner</span>
+                <span class="achievement-year">2025</span>
+              </div>
+              <h3 class="achievement-title">Smart India Hackathon (SIH)</h3>
+              <p class="achievement-desc">
+                Winner – Institute Level Round. Developed <strong>EcoSnap</strong>, a rewards-based mobile application
+                incentivizing eco-friendly actions (e.g., proper waste disposal) through automated image verification
+                and a community credit system.
+              </p>
+              <div class="achievement-chips">
+                <span class="chip">EcoSnap</span>
+                <span class="chip">AI Verification</span>
+                <span class="chip">Mobile App</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Achievement 2: Academic Standing -->
+          <div class="card achievement-card">
+            <div class="achievement-icon" aria-hidden="true">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="8" r="7"></circle>
+                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline>
+              </svg>
+            </div>
+            <div class="achievement-content">
+              <div class="achievement-meta">
+                <span class="badge badge-accent">Academic Standing</span>
+                <span class="achievement-year">2023 – Present</span>
+              </div>
+              <h3 class="achievement-title">9.09 / 10 CGPA Merit</h3>
+              <p class="achievement-desc">
+                Maintained top-tier academic standing throughout B.Tech in Information Technology at K. J. Somaiya
+                Institute of Technology with consistent coursework excellence in DBMS, Statistics & Probability, and
+                Operating Systems.
+              </p>
+              <div class="achievement-chips">
+                <span class="chip">CGPA 9.09</span>
+                <span class="chip">KJSIT Mumbai</span>
+                <span class="chip">IT Department</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="card contact-box">
+          <div class="contact-header">
+            <h2 class="section-title">Let's connect</h2>
+            <p class="contact-intro">Open to Data Analyst and SDE opportunities.</p>
+            <p class="contact-body">
+              Whether you are hiring for an entry-level analyst or developer role, have questions about my projects, or
+              would like to discuss data, my inbox is always open.
+            </p>
+          </div>
+
+          <div class="contact-actions-row">
+            <!-- Big Email Button -->
+            <a href="mailto:d.abhinav2802@gmail.com" class="btn btn-primary contact-main-btn">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+                <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+              </svg>
+              <span>Email: d.abhinav2802@gmail.com</span>
+            </a>
+
+            <!-- Copy Email Button -->
+            <button class="btn btn-secondary copy-email-btn" id="copyEmailBtn"
+              aria-label="Copy email address to clipboard">
+              <svg id="copyIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+              </svg>
+              <span id="copyBtnText">Copy Email</span>
+            </button>
+          </div>
+
+          <div class="contact-social-row">
+            <a href="https://www.linkedin.com/in/abhinavdasari28/" class="social-pill" target="_blank"
+              rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span>LinkedIn / in/abhinavdasari28</span>
+            </a>
+            <a href="https://github.com/280205-Abhi" class="social-pill" target="_blank" rel="noopener noreferrer">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                aria-hidden="true">
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                </path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+              <span>GitHub / 280205-Abhi</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <!-- FOOTER -->
   <footer class="site-footer">
-    <div class="footer-container">
-
-      <div class="footer-top-row">
-        <!-- Logo & Subline -->
-        <div class="footer-brand">
-          <div class="logo-code" onclick="scrollToTop()">
-            <span class="code-bracket">&lt;</span>
-            <span class="code-name">Abhinav</span>
-            <span class="code-bracket">/&gt;</span>
-          </div>
-          <p class="footer-subtext">Designed & Built by Abhinav Dasari</p>
-        </div>
-
-        <!-- Social Icons & Scroll Top -->
-        <div class="footer-actions">
-          <div class="footer-socials">
-            <a href="https://github.com/280205-Abhi" target="_blank" aria-label="GitHub" class="footer-social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path
-                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
-                <path d="M9 18c-4.51 2-5-2-7-2" />
-              </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" aria-label="LinkedIn"
-              class="footer-social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
-                <rect width="4" height="12" x="2" y="9" />
-                <circle cx="4" cy="4" r="2" />
-              </svg>
-            </a>
-            <a href="mailto:d.abhinav2802@gmail.com" aria-label="Email" class="footer-social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-              </svg>
-            </a>
-          </div>
-
-          <button class="footer-scroll-top" onclick="scrollToTop()" aria-label="Back to top">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-              stroke-linejoin="round">
-              <line x1="12" y1="19" x2="12" y2="5"></line>
-              <polyline points="5 12 12 5 19 12"></polyline>
-            </svg>
-          </button>
-        </div>
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <img src="files/AD logo.png" alt="AD logo" class="footer-logo-img" width="22" height="22" />
+        <p class="footer-copy">© 2026 Abhinav Dasari. All rights reserved.</p>
       </div>
-
-      <!-- Bottom Centered Copyright -->
-      <div class="footer-bottom-row">
-        <p class="copyright-text">© <span id="footer-year"></span> Abhinav Dasari. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://github.com/280205-Abhi" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path
+              d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+            </path>
+            <path d="M9 18c-4.51 2-5-2-7-2"></path>
+          </svg>
+        </a>
+        <a href="https://www.linkedin.com/in/abhinavdasari28/" target="_blank" rel="noopener noreferrer"
+          aria-label="LinkedIn">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+            <rect width="4" height="12" x="2" y="9"></rect>
+            <circle cx="4" cy="4" r="2"></circle>
+          </svg>
+        </a>
+        <a href="mailto:d.abhinav2802@gmail.com" aria-label="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"></path>
+            <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+          </svg>
+        </a>
       </div>
-
     </div>
   </footer>
 
-  <script src="main.js"></script>
+  <!-- ACCESSIBLE PROJECT DETAILS MODAL -->
+  <div id="projectModal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modalTitle" hidden>
+    <div class="modal-dialog">
+      <div class="modal-content card">
+        <div class="modal-header">
+          <div>
+            <span class="badge badge-accent" id="modalBadge">Badge</span>
+            <h3 class="modal-title" id="modalTitle">Project Title</h3>
+          </div>
+          <button class="modal-close-btn" id="modalCloseBtn" aria-label="Close modal dialog">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          </button>
+        </div>
 
+        <div class="modal-body" id="modalBody">
+          <!-- Populated dynamically by script.js -->
+        </div>
+
+        <div class="modal-footer" id="modalFooter">
+          <!-- Populated dynamically by script.js -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vanilla Scripts -->
+  <script src="script.js"></script>
+  <!-- Compatibility shim for any legacy references -->
+  <script src="main.js"></script>
 </body>
 
 </html>
