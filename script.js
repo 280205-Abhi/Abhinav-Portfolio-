@@ -12,7 +12,11 @@
  * - Respects prefers-reduced-motion
  */
 
+// Single source of truth for CGPA
+const PORTFOLIO_CGPA = '9.08';
+
 document.addEventListener('DOMContentLoaded', () => {
+  initCgpa();
   initTheme();
   initScrollProgress();
   initMobileMenu();
@@ -23,6 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
   initCopyEmail();
   initScrollFadeIn();
 });
+
+function initCgpa() {
+  document.querySelectorAll('[data-cgpa]').forEach(el => {
+    el.setAttribute('data-target', PORTFOLIO_CGPA);
+  });
+  document.querySelectorAll('.cgpa-value').forEach(el => {
+    el.textContent = PORTFOLIO_CGPA;
+  });
+}
 
 /* ==========================================================================
    1. THEME TOGGLE (Light / Dark)
@@ -118,7 +131,7 @@ function initMobileMenu() {
    4. SCROLL-SPY ACTIVE NAV HIGHLIGHTING
    ========================================================================== */
 function initScrollSpy() {
-  const navLinks = document.querySelectorAll('.nav-menu .nav-link');
+  const navLinks = document.querySelectorAll('.nav-menu .nav-link, .mobile-nav-link');
   const sections = document.querySelectorAll('section[id]');
   if (!sections.length || !navLinks.length) return;
 
@@ -274,7 +287,7 @@ const projectDetailsData = {
       "Identified the Non-Refundable Deposit Cancellation Paradox: bookings with non-refundable deposits displayed higher cancellation rates due to extended booking lead-times and third-party aggregator behaviors.",
       "Synthesized findings into 6 targeted business interventions regarding dynamic deposit scaling, cancellation buffer windows, and direct-booking incentives."
     ],
-    results: "Quantified $22.97M in actual realized revenue earned vs. $11.47M lost to cancellations, equipping leadership with clear seasonality curves and lead-time mitigation policies.",
+    results: "Quantified $22.97M in actual realized revenue earned (calculated from non-cancelled bookings only) vs. $11.47M lost to cancellations, equipping leadership with clear seasonality curves and lead-time mitigation policies.",
     tech: ["Python", "Pandas", "Matplotlib", "Seaborn", "Plotly", "EDA", "Data Cleaning"],
     links: [
       { label: "View GitHub Repo", url: "https://github.com/280205-Abhi/Hotel_Booking_Analysis" },
@@ -292,8 +305,8 @@ const projectDetailsData = {
       "Tracking language popularity shifts over time across a chosen topic.",
       "Building a searchable repo health dashboard with trend charts."
     ],
-    results: "In progress. Final results will be added once the health score and dashboard are complete.", // TODO: update with real numbers when shipped
-    tech: ["GitHub REST API", "Python", "Pandas", "SQL"], // TODO: confirm each
+    results: "Results will be added once the dashboard is complete.",
+    tech: ["GitHub REST API", "Python", "Pandas", "SQL"],
     links: [
       { label: "View Source Code", url: "https://github.com/280205-Abhi/YOUR_REPO" }, // TODO
       { label: "View Live Dashboard", url: "https://YOUR_DASHBOARD_LINK" } // TODO: only when deployed

@@ -4,26 +4,27 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Abhinav Dasari | Data Analyst & SDE Portfolio</title>
+  <title>Abhinav Dasari | Data Analyst</title>
   <meta name="description"
     content="Portfolio of Abhinav Dasari, a final-year B.Tech IT student at K. J. Somaiya Institute of Technology specializing in Data Analysis, SQL, Python, and actionable dashboards." />
 
   <!-- Open Graph / Social Meta -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Abhinav Dasari | Data Analyst & SDE Portfolio" />
+  <meta property="og:title" content="Abhinav Dasari | Data Analyst & SDE Roles" />
   <meta property="og:description"
-    content="Final-year IT student who turns noisy data into meaningful insights. Open to Data Analyst and SDE roles." />
-  <meta property="og:image" content="./files/profile.png" />
+    content="Portfolio of Abhinav Dasari, a final-year B.Tech IT student at K. J. Somaiya Institute of Technology specializing in Data Analysis, SQL, Python, and actionable dashboards." />
+  <meta property="og:image" content="https://280205-abhi.github.io/Abhinav-Portfolio-/files/profile.png" />
   <meta property="og:url" content="https://280205-abhi.github.io/Abhinav-Portfolio-/" />
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" href="./files/AD%20logo.png" />
 
-  <!-- Google Fonts: Inter -->
+  <!-- Google Fonts: Bricolage Grotesque & Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
   <!-- Stylesheet -->
   <link rel="stylesheet" href="style.css" />
 
@@ -59,9 +60,10 @@
 
         <!-- Desktop Navigation Links -->
         <ul class="nav-menu" id="navMenu">
-          <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#skills" class="nav-link">Skills</a></li>
+          <li><a href="#projects" class="nav-link">Projects</a></li>
           <li><a href="#experience" class="nav-link">Experience</a></li>
+          <li><a href="#achievements" class="nav-link">Achievements</a></li>
           <li><a href="#contact" class="nav-link">Contact</a></li>
         </ul>
 
@@ -110,22 +112,23 @@
           </button>
         </div>
       </div>
-
-      <!-- Mobile Dropdown Menu -->
-      <div class="mobile-dropdown" id="mobileDropdown" aria-hidden="true">
-        <ul class="mobile-nav-list">
-          <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
-          <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
-          <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
-          <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
-          <li class="mobile-nav-cta">
-            <a href="files/Abhinav_Final_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-              Download Resume
-            </a>
-          </li>
-        </ul>
-      </div>
     </nav>
+
+    <!-- Mobile Dropdown Menu -->
+    <div class="mobile-dropdown" id="mobileDropdown" aria-hidden="true">
+      <ul class="mobile-nav-list">
+        <li><a href="#skills" class="mobile-nav-link">Skills</a></li>
+        <li><a href="#projects" class="mobile-nav-link">Projects</a></li>
+        <li><a href="#experience" class="mobile-nav-link">Experience</a></li>
+        <li><a href="#achievements" class="mobile-nav-link">Achievements</a></li>
+        <li><a href="#contact" class="mobile-nav-link">Contact</a></li>
+        <li class="mobile-nav-cta">
+          <a href="files/Abhinav_Final_Resume.pdf" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
+            Download Resume
+          </a>
+        </li>
+      </ul>
+    </div>
   </header>
 
   <main>
@@ -140,14 +143,11 @@
             <span>Open to Data Analyst / SDE roles</span>
           </div>
 
-          <h1 class="hero-title">Hi, I'm Abhinav Dasari</h1>
-          <p class="hero-subline">
-            Final-year IT student who turns noisy data into meaningful insights.
-          </p>
+          <span class="hero-name">Hi, I'm</span>
+          <h1 class="hero-title">Abhinav Dasari</h1>
 
           <p class="hero-summary">
-            Specializing in exploratory data analysis, SQL querying, Python analytics, and interactive dashboards.
-            Passionate about building transparent, metric-driven solutions for real-world business decisions.
+            Final-year IT student who turns noisy data into meaningful insights, using SQL, Python and dashboards.
           </p>
 
           <!-- Action Buttons -->
@@ -224,7 +224,7 @@
       <div class="container">
         <div class="stats-strip" aria-label="Key Highlights">
           <div class="stat-item">
-            <span class="stat-number" data-target="96.55" data-suffix="%">0%</span>
+            <span class="stat-number" data-target="96.55" data-decimals="2" data-suffix="%">0.00%</span>
             <span class="stat-label">Model Accuracy (NeuroAI)</span>
           </div>
           <div class="stat-divider" aria-hidden="true"></div>
@@ -239,7 +239,8 @@
           </div>
           <div class="stat-divider" aria-hidden="true"></div>
           <div class="stat-item">
-            <span class="stat-number" data-target="9.09" data-decimals="2">0.00</span>
+            <!-- TODO: confirm CGPA against marksheet -->
+            <span class="stat-number" data-target="9.08" data-decimals="2" data-cgpa>0.00</span>
             <span class="stat-label">B.Tech CGPA / 10</span>
           </div>
         </div>
@@ -261,16 +262,12 @@
               (graduating in 2027).
             </p>
             <p>
-              I focus on data analysis, SQL querying, Python analytics, and building intuitive dashboards that translate
-              messy datasets into actionable insights.
+              I focus on exploratory data analysis, SQL querying, Python analytics, and interactive dashboards to
+              uncover clear, reliable patterns from complex datasets.
             </p>
             <p>
-              With practical experience in exploratory data analysis, machine learning classification, and database
-              querying, I enjoy diving into datasets to understand the operational context behind the numbers.
-            </p>
-            <p>
-              I am actively seeking entry-level Data Analyst roles and Software Development Engineer (SDE) / Backend
-              positions where I can contribute to data integrity and software reliability.
+              I am seeking entry-level Data Analyst and Software Development Engineer (SDE) roles where I can apply
+              strong data fundamentals, problem solving, and analytical rigor.
             </p>
           </div>
 
@@ -281,7 +278,8 @@
             <p class="edu-inst">K. J. Somaiya Institute of Technology, Mumbai</p>
             <div class="edu-meta">
               <span><strong>Graduation:</strong> 2023 – 2027 (Expected)</span>
-              <span><strong>CGPA:</strong> 9.09 / 10</span>
+              <!-- TODO: confirm CGPA against marksheet -->
+              <span><strong>CGPA:</strong> <span class="cgpa-value">9.08</span> / 10</span>
             </div>
             <p class="edu-coursework">
               <strong>Coursework:</strong> Data Structures & Algorithms, Database Management Systems (DBMS), Statistics
@@ -324,7 +322,7 @@
               <span class="chip chip-highlight">SQL</span>
               <span class="chip">Pandas</span>
               <span class="chip">NumPy</span>
-              <span class="chip chip-highlight">Power BI</span>
+              <span class="chip">Power BI</span>
               <span class="chip">Tableau</span>
               <span class="chip">Matplotlib</span>
               <span class="chip">Seaborn</span>
@@ -353,14 +351,13 @@
               </div>
             </div>
             <div class="skill-chips">
-              <span class="chip chip-highlight">MySQL</span>
-              <span class="chip">MongoDB</span> <!-- TODO: confirm -->
+              <span class="chip chip-highlight">FastAPI</span>
+              <span class="chip">MySQL</span>
+              <span class="chip">MongoDB</span>
               <span class="chip">SQL Joins & CTEs</span>
               <span class="chip">Window Functions</span>
               <span class="chip">REST APIs</span>
-              <span class="chip">FastAPI</span>
               <span class="chip">Flask</span>
-              <span class="chip">Data Ingestion Pipelines</span>
             </div>
           </div>
 
@@ -382,13 +379,13 @@
             </div>
             <div class="skill-chips">
               <span class="chip chip-highlight">Git & GitHub</span>
+              <span class="chip chip-highlight">HTML/CSS</span>
+              <span class="chip chip-highlight">React.js</span>
               <span class="chip">KPI Formulation</span>
               <span class="chip">Dashboards</span>
-              <span class="chip">TypeScript</span> <!-- TODO: confirm -->
-              <span class="chip">Next.js</span> <!-- TODO: confirm -->
-              <span class="chip">PyTorch</span> <!-- TODO: confirm -->
-              <span class="chip">HTML/CSS</span>
-              <span class="chip">React.js</span>
+              <span class="chip">TypeScript</span> <!-- TODO: keep only if I can defend this in an interview -->
+              <span class="chip">Next.js</span> <!-- TODO: keep only if I can defend this in an interview -->
+              <span class="chip">PyTorch</span> <!-- TODO: keep only if I can defend this in an interview -->
               <span class="chip">Scikit-learn</span>
             </div>
           </div>
@@ -444,7 +441,7 @@
 
             <div class="project-tech-chips">
               <span class="chip">Python</span>
-              <span class="chip">PyTorch</span> <!-- TODO: confirm -->
+              <span class="chip">PyTorch</span> <!-- TODO: keep only if I can defend this in an interview -->
               <span class="chip">FastAPI</span>
               <span class="chip">React</span>
               <span class="chip">Scikit-learn</span>
@@ -466,19 +463,9 @@
                   </svg>
                   <span>Code</span>
                 </a>
-                <a href="#" class="btn-link" onclick="openProjectModal('neuroai'); return false;">
-                  <!-- TODO: add link -->
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                    aria-hidden="true">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-                    <polyline points="15 3 21 3 21 9"></polyline>
-                    <line x1="10" y1="14" x2="21" y2="3"></line>
-                  </svg>
-                  <span>Details / Demo</span>
-                </a>
               </div>
-              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('neuroai')">Inspect Details</button>
+              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('neuroai')" aria-haspopup="dialog"
+                aria-label="Inspect details for NeuroAI">Inspect Details</button>
             </div>
           </article>
 
@@ -504,7 +491,8 @@
             </ul>
 
             <div class="project-result">
-              <strong>Key Result:</strong> Identified $22.97M actual revenue earned vs. $11.47M lost to cancellations,
+              <strong>Key Result:</strong> Identified $22.97M actual revenue earned (calculated from non-cancelled
+              bookings only) vs. $11.47M lost to cancellations,
               generating 6 actionable pricing and cancellation policy recommendations.
             </div>
 
@@ -533,7 +521,7 @@
                   <span>Code</span>
                 </a>
                 <a href="https://drive.google.com/file/d/1sXUeJZfLIHa84kZxPm1ZcQuG0lCqpnpA/view?usp=drive_link"
-                  class="btn-link" target="_blank" rel="noopener noreferrer"> <!-- TODO: add link -->
+                  class="btn-link" target="_blank" rel="noopener noreferrer">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
                     aria-hidden="true">
@@ -544,7 +532,8 @@
                   <span>Report</span>
                 </a>
               </div>
-              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('hotel')">Inspect Details</button>
+              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('hotel')" aria-haspopup="dialog"
+                aria-label="Inspect details for Hotel Booking Analysis">Inspect Details</button>
             </div>
           </article>
 
@@ -569,15 +558,14 @@
             </ul>
 
             <div class="project-result">
-              <strong>Status:</strong> Data collection and health score in progress.
-              <!-- TODO: replace with a real result once shipped, e.g. "Analysed X repos across Y topics" -->
+              <strong>Status:</strong> Results will be added once the dashboard is complete.
             </div>
 
             <div class="project-tech-chips">
               <span class="chip">GitHub REST API</span>
-              <span class="chip">Python</span> <!-- TODO: confirm -->
-              <span class="chip">Pandas</span> <!-- TODO: confirm -->
-              <span class="chip">SQL</span> <!-- TODO: confirm -->
+              <span class="chip">Python</span>
+              <span class="chip">Pandas</span>
+              <span class="chip">SQL</span>
             </div>
 
             <div class="project-card-footer">
@@ -604,7 +592,8 @@
                   <span>Live Dashboard</span>
                 </a>
               </div>
-              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('github')">Inspect Details</button>
+              <button class="btn btn-sm btn-ghost" onclick="openProjectModal('github')" aria-haspopup="dialog"
+                aria-label="Inspect details for GitHub Open-Source Ecosystem Analytics">Inspect Details</button>
             </div>
           </article>
         </div>
@@ -717,8 +706,8 @@
             </div>
           </div>
 
-          <!-- Achievement 2: Academic Standing -->
-          <div class="card achievement-card">
+          <!-- TODO: add certificate or other achievement -->
+          <div class="card achievement-card" hidden>
             <div class="achievement-icon" aria-hidden="true">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
                 stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -728,19 +717,16 @@
             </div>
             <div class="achievement-content">
               <div class="achievement-meta">
-                <span class="badge badge-accent">Academic Standing</span>
-                <span class="achievement-year">2023 – Present</span>
+                <span class="badge badge-accent">Certificate / Award</span>
+                <span class="achievement-year">YYYY</span>
               </div>
-              <h3 class="achievement-title">9.09 / 10 CGPA Merit</h3>
+              <h3 class="achievement-title">Achievement Title</h3>
               <p class="achievement-desc">
-                Maintained top-tier academic standing throughout B.Tech in Information Technology at K. J. Somaiya
-                Institute of Technology with consistent coursework excellence in DBMS, Statistics & Probability, and
-                Operating Systems.
+                Description of certificate, award, or competition milestone.
               </p>
               <div class="achievement-chips">
-                <span class="chip">CGPA 9.09</span>
-                <span class="chip">KJSIT Mumbai</span>
-                <span class="chip">IT Department</span>
+                <span class="chip">Credential</span>
+
               </div>
             </div>
           </div>
@@ -883,8 +869,6 @@
 
   <!-- Vanilla Scripts -->
   <script src="script.js"></script>
-  <!-- Compatibility shim for any legacy references -->
-  <script src="main.js"></script>
 </body>
 
 </html>
