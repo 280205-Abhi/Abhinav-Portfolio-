@@ -1947,3 +1947,144 @@ input:focus-visible {
     font-size: 0.925rem;
   }
 }
+
+/* ==========================================================================
+   ABOUT CTA + COMBINED ACHIEVEMENTS / CERTIFICATIONS
+   ========================================================================== */
+.about-actions {
+  margin-top: 8px;
+}
+
+.about-highlight-btn {
+  gap: 10px;
+  box-shadow: 0 5px 14px rgba(20, 184, 166, 0.14);
+}
+
+.about-highlight-btn svg {
+  transition: transform var(--transition-fast);
+}
+
+.about-highlight-btn:hover svg {
+  transform: translate(2px, -2px);
+}
+
+.credentials-subsection {
+  margin-top: 56px;
+  padding-top: 36px;
+  border-top: 1px solid var(--border-color);
+}
+
+.credentials-heading {
+  margin-bottom: 22px;
+}
+
+.credentials-eyebrow {
+  display: inline-block;
+  margin-bottom: 6px;
+  color: var(--accent);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.credentials-heading h3 {
+  margin-bottom: 6px;
+  font-family: var(--f1);
+  font-size: 1.55rem;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+.credentials-heading p {
+  max-width: 620px;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.certification-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 22px;
+  min-width: 0;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal), border-color var(--transition-normal);
+}
+
+.certification-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-hover);
+  border-color: rgba(20, 184, 166, 0.35);
+}
+
+.certification-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  color: var(--accent-dark);
+  background: var(--accent-light);
+}
+
+.certification-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.certification-provider {
+  color: var(--accent);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.045em;
+  text-transform: uppercase;
+}
+
+.certification-info h4 {
+  color: var(--text-primary);
+  font-family: var(--f1);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+.certification-info p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.certification-info .btn-link {
+  margin-top: 5px;
+}
+
+@media (max-width: 640px) {
+  .about-highlight-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .credentials-subsection {
+    margin-top: 40px;
+    padding-top: 28px;
+  }
+
+  .certifications-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .certification-card {
+    padding: 18px;
+  }
+}
