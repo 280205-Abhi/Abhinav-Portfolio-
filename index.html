@@ -483,9 +483,25 @@
                 diagnostic report generation.</li>
             </ul>
 
-            <div class="project-result">
-              <strong>Key Result:</strong> Clinical ensemble (Random Forest) achieved 96.55% test accuracy; MRI ensemble
-              (ResNet18 + EfficientNet-B0) achieved 84.21% accuracy and 0.9117 AUC.
+            <div class="project-metrics-box" aria-label="Key Results: Clinical ensemble 96.55% test accuracy, MRI ensemble 84.21% accuracy and 0.9117 AUC">
+              <div class="metric-row">
+                <div class="metric-label">
+                  <span class="metric-title">Clinical ensemble</span>
+                  <span class="metric-subtitle">Random Forest</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill metric-bar-teal" style="width: 96.55%;">96.55%</div>
+                </div>
+              </div>
+              <div class="metric-row">
+                <div class="metric-label">
+                  <span class="metric-title">MRI ensemble</span>
+                  <span class="metric-subtitle">ResNet18 + EfficientNet-B0</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill metric-bar-amber" style="width: 84.21%;">84.21% · AUC 0.9117</div>
+                </div>
+              </div>
             </div>
 
             <div class="project-tech-chips">
@@ -535,14 +551,20 @@
                 date datatypes to secure data integrity.</li>
               <li>Calculated genuine revenue exclusively from non-cancelled bookings, establishing a distinct metric to
                 track revenue lost directly to cancellations.</li>
-              <li>Discovered the non-refundable deposit cancellation paradox where high-lead-time bookings suffered
-                higher cancellation rates due to rigid non-refundable policies.</li>
+              <li>Discovered the non-refundable deposit cancellation paradox and formulated 6 actionable pricing and
+                cancellation policy recommendations.</li>
             </ul>
 
-            <div class="project-result">
-              <strong>Key Result:</strong> Identified $22.97M actual revenue earned (calculated from non-cancelled
-              bookings only) vs. $11.47M lost to cancellations,
-              generating 6 actionable pricing and cancellation policy recommendations.
+            <div class="project-metrics-box" aria-label="Key Results: $22.97M earned vs $11.47M lost to cancellations">
+              <div class="metric-stack-row">
+                <div class="metric-bar-pill metric-bar-teal" style="width: 67%; min-width: 140px;">
+                  <span>$22.97M earned</span>
+                </div>
+                <div class="metric-bar-pill metric-bar-red" style="width: 33%; min-width: 120px;">
+                  <span>$11.47M lost</span>
+                </div>
+                <div class="metric-caption">Revenue: earned vs. lost to cancellations</div>
+              </div>
             </div>
 
             <div class="project-tech-chips">
@@ -606,8 +628,33 @@
               <li>Creating a searchable repo health dashboard with trend charts.</li>
             </ul>
 
-            <div class="project-result">
-              <strong>Status:</strong> Results will be added once the dashboard is complete.
+            <div class="project-metrics-box" aria-label="Key Results: Real-time metrics pipeline in development">
+              <div class="metric-row">
+                <div class="metric-label">
+                  <span class="metric-title">Health Score</span>
+                  <span class="metric-subtitle">Activity &amp; Commit Signals</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill metric-bar-loading-teal" style="width: 72%;">
+                    <span>Computing signals...</span>
+                  </div>
+                </div>
+              </div>
+              <div class="metric-row">
+                <div class="metric-label">
+                  <span class="metric-title">Ecosystem Vitality</span>
+                  <span class="metric-subtitle">Contributor Retention</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill metric-bar-loading-amber" style="width: 48%;">
+                    <span>Analyzing repositories...</span>
+                  </div>
+                </div>
+              </div>
+              <div class="metric-loading-caption">
+                <span class="loading-dot" aria-hidden="true"></span>
+                <span>Data pipeline in development · Live metrics loading</span>
+              </div>
             </div>
 
             <div class="project-tech-chips">

@@ -1070,6 +1070,202 @@ input:focus-visible {
   line-height: 1.5;
 }
 
+/* ==========================================================================
+   PROJECT METRICS / BAR REPRESENTATION
+   ========================================================================== */
+.project-metrics-box {
+  background-color: var(--bg-card-subtle);
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  padding: 16px 18px;
+  margin: 12px 0 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color var(--transition-normal);
+}
+
+.project-card:hover .project-metrics-box {
+  border-color: rgba(20, 184, 166, 0.35);
+}
+
+.metric-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  align-items: center;
+  gap: 14px;
+}
+
+.metric-label {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.metric-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.metric-subtitle {
+  font-size: 0.75rem;
+  font-family: var(--f2);
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.metric-bar-track {
+  width: 100%;
+  height: 32px;
+  background-color: rgba(15, 23, 42, 0.06);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+[data-theme="dark"] .metric-bar-track {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.metric-bar-fill {
+  height: 100%;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  padding-left: 14px;
+  padding-right: 12px;
+  color: #FFFFFF;
+  font-size: 0.825rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Fill Colors */
+.metric-bar-teal {
+  background: linear-gradient(90deg, #0D9488 0%, #14B8A6 100%);
+}
+
+.metric-bar-amber {
+  background: linear-gradient(90deg, #D97706 0%, #F59E0B 100%);
+}
+
+.metric-bar-red {
+  background: linear-gradient(90deg, #DC2626 0%, #EF4444 100%);
+}
+
+/* Hotel Stacked Bars (Earned vs Lost) */
+.metric-stack-row {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.metric-bar-pill {
+  height: 36px;
+  border-radius: var(--radius-pill);
+  display: flex;
+  align-items: center;
+  padding-left: 16px;
+  padding-right: 14px;
+  color: #FFFFFF;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+  transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.metric-caption {
+  font-size: 0.8rem;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 4px;
+  letter-spacing: 0.02em;
+}
+
+/* Loading Animation for In-Progress Projects */
+.metric-bar-loading-teal {
+  background: linear-gradient(90deg, #0D9488 0%, #2DD4BF 50%, #0D9488 100%);
+  background-size: 200% 100%;
+  animation: metricShimmer 2s infinite linear;
+}
+
+.metric-bar-loading-amber {
+  background: linear-gradient(90deg, #D97706 0%, #FBBF24 50%, #D97706 100%);
+  background-size: 200% 100%;
+  animation: metricShimmer 2s infinite linear;
+}
+
+.metric-loading-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.8rem;
+  font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.loading-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-ring);
+  animation: pulseDot 1.5s infinite ease-in-out;
+}
+
+@keyframes metricShimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@keyframes pulseDot {
+  0%, 100% {
+    transform: scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .metric-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .metric-bar-track {
+    height: 30px;
+  }
+
+  .metric-bar-fill {
+    font-size: 0.78rem;
+    padding-left: 10px;
+  }
+
+  .metric-bar-pill {
+    height: 32px;
+    font-size: 0.8rem;
+    padding-left: 12px;
+  }
+}
+
 .project-tech-chips {
   display: flex;
   flex-wrap: wrap;
