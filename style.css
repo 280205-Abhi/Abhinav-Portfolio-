@@ -2004,7 +2004,7 @@ input:focus-visible {
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 18px;
 }
 
@@ -2041,6 +2041,8 @@ input:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   gap: 6px;
+  flex: 1;
+  height: 100%;
 }
 
 .certification-provider {
@@ -2065,7 +2067,18 @@ input:focus-visible {
 }
 
 .certification-info .btn-link {
-  margin-top: 5px;
+  margin-top: auto;
+  padding-top: 6px;
+}
+
+@media (max-width: 900px) {
+  .certifications-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .certifications-grid:has(> .certification-card:nth-child(3):last-child) > .certification-card:nth-child(3) {
+    grid-column: span 2;
+  }
 }
 
 @media (max-width: 640px) {
@@ -2082,6 +2095,10 @@ input:focus-visible {
   .certifications-grid {
     grid-template-columns: 1fr;
     gap: 14px;
+  }
+
+  .certifications-grid:has(> .certification-card:nth-child(3):last-child) > .certification-card:nth-child(3) {
+    grid-column: span 1;
   }
 
   .certification-card {
