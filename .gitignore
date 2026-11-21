@@ -1,0 +1,7 @@
+# Local backup directory (never push to GitHub)
+_backup_original_ui/
+
+# OS / Editor temporary files
+.DS_Store
+Thumbs.db
+*.tmp
