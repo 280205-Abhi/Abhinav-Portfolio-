@@ -1201,72 +1201,268 @@ h1 em {
 
 /* =========================================================================
    08. JOURNEY & CAREER TIMELINE
-   Two-column chronological experience rows with bulleted achievements
+   Console-grade milestone cards with status dots, badges, tech tags, and hover lift
    ========================================================================= */
 /* ---------- journey ---------- */
 .rows {
-  display: grid;
-  gap: 0;
-  border: 1px solid var(--line);
-  border-radius: var(--r);
-  overflow: hidden;
-  background: var(--panel);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .row {
   display: grid;
-  grid-template-columns: 150px minmax(0, 1fr);
-  gap: 18px;
-  padding: 16px 18px;
-  border-bottom: 1px solid var(--line-soft);
-  transition: background-color .25s;
+  grid-template-columns: 165px minmax(0, 1fr);
+  gap: 20px;
+  padding: 18px 20px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--r);
+  position: relative;
+  overflow: hidden;
+  transition: border-color .3s, transform .35s var(--ease-out), box-shadow .35s, background-color .25s;
 }
 
-.row:last-child {
-  border-bottom: 0;
+.row::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--line);
+  transition: background-color .3s;
+}
+
+.row[data-tone="lime"]::before {
+  background: var(--lime);
+}
+
+.row[data-tone="cyan"]::before {
+  background: var(--cyan);
+}
+
+.row[data-tone="amber"]::before {
+  background: var(--amber);
+}
+
+.row[data-tone="red"]::before {
+  background: var(--red);
 }
 
 .row:hover {
   background: var(--panel-2);
+  border-color: #33465a;
+  transform: translateY(-2px);
+  box-shadow: 0 16px 32px -20px rgba(0, 0, 0, .85);
+}
+
+/* Left metadata column: date, type badge, status dot */
+.row__side {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row__side-top {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.row__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 2px;
+  flex: none;
+  background: var(--line-light);
+  box-shadow: 0 0 6px rgba(255, 255, 255, .1);
+}
+
+.row[data-tone="lime"] .row__dot {
+  background: var(--lime);
+  box-shadow: 0 0 8px rgba(200, 247, 81, .4);
+}
+
+.row[data-tone="cyan"] .row__dot {
+  background: var(--cyan);
+  box-shadow: 0 0 8px rgba(87, 199, 232, .4);
+}
+
+.row[data-tone="amber"] .row__dot {
+  background: var(--amber);
+  box-shadow: 0 0 8px rgba(245, 166, 91, .4);
 }
 
 .row__when {
   font-family: var(--mono);
-  font-size: .6rem;
+  font-size: .66rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--text-2);
+  font-weight: 500;
+}
+
+.row__type {
+  font-family: var(--mono);
+  font-size: .52rem;
   letter-spacing: .08em;
   text-transform: uppercase;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  border: 1px solid var(--line);
   color: var(--muted);
-  padding-top: 3px;
+  width: fit-content;
+}
+
+.row[data-tone="lime"] .row__type {
+  border-color: rgba(200, 247, 81, .35);
+  color: var(--lime);
+  background: rgba(200, 247, 81, .06);
+}
+
+.row[data-tone="cyan"] .row__type {
+  border-color: rgba(87, 199, 232, .35);
+  color: var(--cyan);
+  background: rgba(87, 199, 232, .06);
+}
+
+.row[data-tone="amber"] .row__type {
+  border-color: rgba(245, 166, 91, .35);
+  color: var(--amber);
+  background: rgba(245, 166, 91, .06);
+}
+
+/* Right main column */
+.row__main {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.row__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.row__title-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
 }
 
 .row__title {
   font-weight: 600;
-  font-size: .95rem;
+  font-size: 1rem;
   letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 0;
+}
+
+.row__meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 12px;
+  font-size: .82rem;
 }
 
 .row__org {
-  font-size: .82rem;
+  font-weight: 500;
   color: var(--cyan);
-  margin-bottom: 6px;
+}
+
+.row[data-tone="lime"] .row__org {
+  color: var(--lime);
+}
+
+.row[data-tone="amber"] .row__org {
+  color: var(--amber);
+}
+
+.row__org-sub {
+  color: var(--muted);
+  font-weight: normal;
+}
+
+.row__location {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .62rem;
+  letter-spacing: .04em;
+}
+
+.row__location svg {
+  width: 11px;
+  height: 11px;
+  stroke: var(--muted);
+}
+
+.row__badge {
+  font-family: var(--mono);
+  font-size: .62rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  padding: 3px 9px;
+  border-radius: 999px;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  background: rgba(245, 166, 91, .08);
+  white-space: nowrap;
+}
+
+.row__desc {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .row__desc li {
   position: relative;
-  padding-left: 14px;
-  font-size: .82rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: .83rem;
+  line-height: 1.5;
   color: var(--text-2);
-  margin-top: 2px;
 }
 
-.row__desc li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: .6em;
-  width: 5px;
-  height: 1.5px;
-  background: var(--line);
+.row__prompt {
+  color: var(--muted);
+  font-family: var(--mono);
+  font-size: .75rem;
+  user-select: none;
+  flex: none;
+  line-height: 1.5;
+}
+
+.row[data-tone="lime"] .row__prompt {
+  color: var(--lime);
+}
+
+.row[data-tone="cyan"] .row__prompt {
+  color: var(--cyan);
+}
+
+.row[data-tone="amber"] .row__prompt {
+  color: var(--amber);
+}
+
+.row__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  padding-top: 2px;
 }
 
 /* =========================================================================
@@ -2114,7 +2310,16 @@ textarea[aria-invalid="true"] {
 
   .row {
     grid-template-columns: 1fr;
-    gap: 4px;
+    gap: 12px;
+    padding: 15px 16px;
+  }
+
+  .row__side {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--line-soft);
   }
 
   .modal {

@@ -416,33 +416,54 @@ const PORTFOLIO_DATA = {
 
   /* -----------------------------------------------------------------------
      7. JOURNEY & EXPERIENCE
-     Career milestones, internships, and education history.
+     Career milestones, internships, simulations, and education history.
+     Each milestone supports: when, title, org, orgSub, location, type, tone, badge,
+     points (bullet achievements), and skills (technologies & domains).
      ----------------------------------------------------------------------- */
   journey: [
     {
       when: "Apr 2026",
       title: "Data Analytics Job Simulation",
-      org: "Deloitte · via Forage",
+      org: "Deloitte",
+      orgSub: "via Forage",
+      location: "Virtual Experience",
+      type: "Simulation",
+      tone: "lime",
+      badge: null,
+      skills: ["Tableau", "Data Cleaning", "Business Analytics", "KPI Dashboards"],
       points: [
-        "Cleaned raw business datasets — errors fixed, ready for downstream analysis.",
-        "Built a Tableau dashboard over key business metrics."
+        "Cleaned and preprocessed raw business datasets by resolving anomalies, nulls, and formatting errors for reliable downstream analytics.",
+        "Engineered an interactive executive Tableau dashboard tracking operational KPIs and telemetry metrics."
       ]
     },
     {
       when: "Jun — Jul 2025",
       title: "Full Stack Developer Intern",
-      org: "TechAsia Mechatronics Pvt Ltd",
+      org: "TechAsia Mechatronics Pvt. Ltd.",
+      orgSub: null,
+      location: "Mumbai, India",
+      type: "Internship",
+      tone: "cyan",
+      badge: null,
+      skills: ["React.js", "SQL", "REST APIs", "Component Architecture"],
       points: [
-        "Built React.js components for a live product showcase site.",
-        "Queried the SQL product database behind the frontend."
+        "Built modular React.js frontend components for a live industrial showcase platform featuring hardware catalogs.",
+        "Queried and managed relational SQL product database records behind the interface to structure dynamic catalog specs."
       ]
     },
     {
       when: "2023 — 2027",
       title: "B.Tech, Information Technology",
-      org: "K. J. Somaiya Institute of Technology, Mumbai",
+      org: "K. J. Somaiya Institute of Technology",
+      orgSub: null,
+      location: "Mumbai, India",
+      type: "Education",
+      tone: "amber",
+      badge: "CGPA 9.08 / 10",
+      skills: ["DSA", "DBMS", "Statistics & Probability", "Operating Systems", "Computer Networks"],
       points: [
-        "CGPA 9.08 / 10. Coursework: DSA, DBMS, statistics, OS, networks."
+        "Ranked top tier with CGPA 9.08 / 10 across foundational and advanced computer engineering disciplines.",
+        "Rigorous coursework in Data Structures & Algorithms, Database Management Systems, Applied Statistics, and Operating Systems."
       ]
     }
   ],
@@ -642,18 +663,63 @@ if (typeof window !== "undefined") {
   const renderJourney = () => {
     const container = $("#journeyContainer");
     if (!container || !DATA.journey) return;
-    container.innerHTML = DATA.journey.map((j) => `
-      <div class="row" data-reveal>
-        <p class="row__when">${j.when}</p>
-        <div>
-          <p class="row__title">${j.title}</p>
-          <p class="row__org">${j.org}</p>
-          <ul class="row__desc">
-            ${(j.points || []).map((pt) => `<li>${pt}</li>`).join("")}
-          </ul>
+    container.innerHTML = DATA.journey.map((j) => {
+      const tone = j.tone || "cyan";
+      const typeBadge = j.type ? `<span class="row__type">${j.type}</span>` : "";
+      const gpaBadge = j.badge ? `<span class="row__badge">${j.badge}</span>` : "";
+      const locationMeta = j.location ? `
+        <span class="row__location">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+            <circle cx="12" cy="10" r="3"/>
+          </svg>
+          ${j.location}
+        </span>
+      ` : "";
+      const orgLine = j.org ? `
+        <span class="row__org">
+          ${j.org}${j.orgSub ? ` <span class="row__org-sub">· ${j.orgSub}</span>` : ""}
+        </span>
+      ` : "";
+      const tags = (j.skills && j.skills.length) ? `
+        <div class="row__tags">
+          ${j.skills.map((s) => `<span class="tag">${s}</span>`).join("")}
         </div>
-      </div>
-    `).join("");
+      ` : "";
+
+      return `
+        <article class="row" data-tone="${tone}" data-reveal>
+          <div class="row__side">
+            <div class="row__side-top">
+              <span class="row__dot" aria-hidden="true"></span>
+              <span class="row__when">${j.when}</span>
+            </div>
+            ${typeBadge}
+          </div>
+          <div class="row__main">
+            <div class="row__header">
+              <div class="row__title-wrap">
+                <h3 class="row__title">${j.title}</h3>
+                <div class="row__meta">
+                  ${orgLine}
+                  ${locationMeta}
+                </div>
+              </div>
+              ${gpaBadge ? `<div class="row__header-extra">${gpaBadge}</div>` : ""}
+            </div>
+            <ul class="row__desc">
+              ${(j.points || []).map((pt) => `
+                <li>
+                  <span class="row__prompt" aria-hidden="true">▹</span>
+                  <span>${pt}</span>
+                </li>
+              `).join("")}
+            </ul>
+            ${tags}
+          </div>
+        </article>
+      `;
+    }).join("");
   };
 
   // 7. Render Competition Wins & Honors
